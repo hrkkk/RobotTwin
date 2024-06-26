@@ -5,6 +5,8 @@ float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 
+extern int angle[6];
+
 CustomOpenGLWidget::CustomOpenGLWidget(QWidget* parent): QOpenGLWidget(parent)
 {
     this->setFocusPolicy(Qt::StrongFocus);
@@ -14,8 +16,8 @@ void CustomOpenGLWidget::initializeGL()
 {
     initializeOpenGLFunctions();
 
-    m_modelShader = Shader("../../modelVertexShader.glsl", "../../modelFragmentShader.glsl");
-    m_lightShader = Shader("../../lightVertexShader.glsl", "../../lightFragmentShader.glsl");
+    m_modelShader = Shader("../RobotTwin/modelVertexShader.glsl", "../RobotTwin/modelFragmentShader.glsl");
+    m_lightShader = Shader("../RobotTwin/lightVertexShader.glsl", "../RobotTwin/lightFragmentShader.glsl");
 
     // 创建光源VAO
     m_lightVAO.create();
@@ -41,13 +43,13 @@ void CustomOpenGLWidget::initializeGL()
         ourModel[i] = new Model(path[i]);
     }
 
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+    glClearColor(0.94f, 0.94f, 0.94f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 }
 
 void CustomOpenGLWidget::paintGL()
 {
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClearColor(0.94f, 0.94f, 0.94f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // 渲染机械臂模型
@@ -72,40 +74,63 @@ void CustomOpenGLWidget::paintGL()
     ourModel[0]->Draw(m_modelShader);
 
     model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f,  0.042f, 0.0f)); // translate it down so it's at the center of the scene
-    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0, 1.0, 0.0));
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    model = glm::translate(model, glm::vec3(0.0f,  0.042f, 0.0f));
+    model = glm::rotate(model, glm::radians((float)angle[0]), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
     m_modelShader.setMat4("model", model);
     ourModel[1]->Draw(m_modelShader);
 
     model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.046f, 0.267f,  0.0f)); // translate it down so it's at the center of the scene
-    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    model = glm::translate(model, glm::vec3(0.046f, 0.267f,  0.0f));
+    model = glm::rotate(model, glm::radians((float)angle[0]), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[1]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
     m_modelShader.setMat4("model", model);
     ourModel[2]->Draw(m_modelShader);
 
     model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(-0.210f, 0.286f, 0.0f)); // translate it down so it's at the center of the scene
-    model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1.0, 0.0, 0.0));
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    model = glm::translate(model, glm::vec3(-0.210f, 0.286f, 0.0f));
+    model = glm::rotate(model, glm::radians((float)angle[0]), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[1]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[2]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
     m_modelShader.setMat4("model", model);
     ourModel[3]->Draw(m_modelShader);
 
     model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(-0.223f, 0.333f, 0.0f)); // translate it down so it's at the center of the scene
-    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    model = glm::translate(model, glm::vec3(-0.223f, 0.333f, 0.0f));
+    model = glm::rotate(model, glm::radians((float)angle[0]), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[1]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[2]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[3]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
     m_modelShader.setMat4("model", model);
     ourModel[4]->Draw(m_modelShader);
 
     model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(-0.523f, 0.333f, 0.0f)); // translate it down so it's at the center of the scene
-    model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0, 0.0, 1.0));
+    model = glm::translate(model, glm::vec3(-0.523f, 0.333f, 0.0f));
+    model = glm::rotate(model, glm::radians((float)angle[0]), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[1]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[2]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[3]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[4]), glm::vec3(0.0, 0.0, 1.0));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
     m_modelShader.setMat4("model", model);
     ourModel[5]->Draw(m_modelShader);
+
+    model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(-0.523f, 0.333f, 0.0f));
+    model = glm::rotate(model, glm::radians((float)angle[0]), glm::vec3(0.0, 1.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[1]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[2]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[3]), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::rotate(model, glm::radians((float)angle[4]), glm::vec3(0.0, 0.0, 1.0));
+    model = glm::rotate(model, glm::radians((float)angle[5]), glm::vec3(0.0, 0.0, 1.0));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+    m_modelShader.setMat4("model", model);
+    ourModel[6]->Draw(m_modelShader);
 
     // 渲染光源
     // m_lightShader.use();
