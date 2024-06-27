@@ -16,7 +16,7 @@ enum Camera_Movement {
 const float YAW         = -90.0f;
 const float PITCH       =  0.0f;
 const float SPEED       =  2.5f;
-const float SENSITIVITY =  0.1f;
+const float SENSITIVITY =  0.5f;
 const float ZOOM        =  45.0f;
 
 
@@ -60,7 +60,8 @@ public:
     // returns the view matrix calculated using Euler Angles and the LookAt Matrix
     glm::mat4 GetViewMatrix()
     {
-        return glm::lookAt(Position, Position + Front, Up);
+        // return glm::lookAt(Position, Position + Front, Up);
+        return glm::lookAt(Position, glm::vec3(0.0f, 0.0f, 0.0f), Up);
     }
 
     // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
@@ -80,23 +81,48 @@ public:
     // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
     void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)
     {
-        xoffset *= MouseSensitivity;
-        yoffset *= MouseSensitivity;
+        // xoffset *= MouseSensitivity;
+        // yoffset *= MouseSensitivity;
 
-        Yaw   += xoffset;
-        Pitch += yoffset;
+        // Yaw   += xoffset;
+        // Pitch += yoffset;
 
-        // make sure that when pitch is out of bounds, screen doesn't get flipped
-        if (constrainPitch)
-        {
-            if (Pitch > 89.0f)
-                Pitch = 89.0f;
-            if (Pitch < -89.0f)
-                Pitch = -89.0f;
-        }
+        // // make sure that when pitch is out of bounds, screen doesn't get flipped
+        // if (constrainPitch)
+        // {
+        //     if (Pitch > 89.0f)
+        //         Pitch = 89.0f;
+        //     if (Pitch < -89.0f)
+        //         Pitch = -89.0f;
+        // }
 
-        // update Front, Right and Up Vectors using the updated Euler angles
-        updateCameraVectors();
+        // // update Front, Right and Up Vectors using the updated Euler angles
+        // updateCameraVectors();
+
+        // 更新相机位置
+        glm::vec3 target = glm::vec3(0.0f);
+        float distance = glm::distance(Position, target);
+
+        // 计算旋转角度
+        float angleX = xoffset * MouseSensitivity;
+        float angleY = yoffset * MouseSensitivity;
+
+        // 限制角度Y以防止相机翻转
+        if (angleY > 90) angleY = 90;
+        if (angleY < -90) angleY = -90;
+
+        // 更新相机的旋转
+        Yaw += angleX; // Yaw around the vertical axis
+        Pitch += angleY; // Pitch around the right axis
+
+        // 将角度转换为弧度
+        float radiansX = glm::radians(Yaw);
+        float radiansY = glm::radians(Pitch);
+
+        // 计算新的相机位置
+        Position = target + glm::vec3(cos(radiansY) * sin(radiansX),
+                                      sin(radiansY),
+                                      cos(radiansY) * cos(radiansX)) * distance;
     }
 
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
