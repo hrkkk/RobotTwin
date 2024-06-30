@@ -1,6 +1,9 @@
 #include "CustomOpenGLWidget.h"
 
+#include <stack>
+
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+glm::vec4 backgroundColor(glm::vec4(0.94f, 0.94f, 0.94f, 1.0f));
 
 CustomOpenGLWidget::CustomOpenGLWidget(QWidget* parent): QOpenGLWidget(parent)
 {
@@ -41,13 +44,13 @@ void CustomOpenGLWidget::initializeGL()
     glEnableVertexAttribArray(1);
     m_coordVAO.release();
 
-    path[0] = "C:\\Users\\hrkkk\\Desktop\\dizuo.obj";
-    path[1] = "C:\\Users\\hrkkk\\Desktop\\jizuo.obj";
-    path[2] = "C:\\Users\\hrkkk\\Desktop\\dabi.obj";
-    path[3] = "C:\\Users\\hrkkk\\Desktop\\pianyi.obj";
-    path[4] = "C:\\Users\\hrkkk\\Desktop\\xiaobi.obj";
-    path[5] = "C:\\Users\\hrkkk\\Desktop\\xiaoxiaobi.obj";
-    path[6] = "C:\\Users\\hrkkk\\Desktop\\zhixingqi.obj";
+    path[0] = "C:\\Users\\hrkkk\\Desktop\\model\\dizuo.obj";
+    path[1] = "C:\\Users\\hrkkk\\Desktop\\model\\jizuo.obj";
+    path[2] = "C:\\Users\\hrkkk\\Desktop\\model\\dabi.obj";
+    path[3] = "C:\\Users\\hrkkk\\Desktop\\model\\pianyi.obj";
+    path[4] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaobi.obj";
+    path[5] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaoxiaobi.obj";
+    path[6] = "C:\\Users\\hrkkk\\Desktop\\model\\zhixingqi.obj";
 
     for (int i = 0; i < 7; i++) {
         ourModel[i] = new Model(path[i]);
@@ -57,53 +60,67 @@ void CustomOpenGLWidget::initializeGL()
         glm::vec3(0.0f, 0.0f, 0.0f),
         glm::vec3(0.0f, 0.0f, 0.0f),
         -180,
-        180
+        180,
+        0
     };
     component[1] = {
-        glm::vec3(0.0f, 0.042f, 0.0f),
+        glm::vec3(0.0f, 0.059f, 0.0f),
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
-        180
+        180,
+        0
     };
     component[2] = {
-        glm::vec3(0.046f, 0.267f, 0.0f),
-        glm::vec3(1.0f, 0.0f, 0.0f),
+        glm::vec3(0.0f, 0.215f, 0.0f),
+        glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
-        180
+        180,
+        0
     };
     component[3] = {
-        glm::vec3(-0.210f, 0.286f, 0.0f),
-        glm::vec3(1.0f, 0.0f, 0.0f),
+        glm::vec3(-0.266f, 0.001f, 0.0f),
+        glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
-        180
+        180,
+        0
     };
     component[4] = {
-        glm::vec3(-0.223f, 0.333f, 0.0f),
+        glm::vec3(0.013f, 0.0f, 0.065f),
         glm::vec3(1.0f, 0.0f, 0.0f),
         -180,
-        180
+        180,
+        0
     };
     component[5] = {
-        glm::vec3(-0.523f, 0.333f, 0.0f),
-        glm::vec3(1.0f, 0.0f, 0.0f),
+        glm::vec3(-0.23f, 0.0f, 0.0f),
+        glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
-        180
+        180,
+        0
     };
     component[6] = {
-        glm::vec3(-0.523f, 0.333f, 0.0f),
+        glm::vec3(-0.035f, 0.0f, 0.0f),
         glm::vec3(1.0f, 0.0f, 0.0f),
         -180,
-        180
+        180,
+        0
     };
 
-    glClearColor(0.94f, 0.94f, 0.94f, 1.0f);
+    glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
     glEnable(GL_DEPTH_TEST);
 }
 
+std::stack<glm::mat4> mvStack;
 void CustomOpenGLWidget::paintGL()
 {
-    glClearColor(0.94f, 0.94f, 0.94f, 1.0f);
+    glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    if (m_polygonMode) {
+        // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    } else {
+        // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
 
     // 渲染机械臂模型
     m_modelShader.use();
@@ -112,75 +129,102 @@ void CustomOpenGLWidget::paintGL()
     m_modelShader.setVec3("lightPos", 1.0f, 1.0f, 1.0f);
     m_modelShader.setVec3("viewPos", camera.Position);
 
-    // view/projection transformations
+    // MVP: 投影矩阵 —— 视图矩阵 —— 模型矩阵
     glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)this->width() / (float)this->height(), 0.1f, 100.0f);
     glm::mat4 view = camera.GetViewMatrix();
     glm::mat4 model = glm::mat4(1.0f);
 
-    // 基座
-    model = glm::translate(model, component[0].origin);     // 平移
-    // model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0, 0.0, 0.0));   // 旋转
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));     // 缩放
     m_modelShader.setMat4("projection", projection);
-    m_modelShader.setMat4("view", view);
+
+    // 将视图矩阵压入栈
+    mvStack.push(view);
+
+    // 基座
+    mvStack.push(mvStack.top());
+    mvStack.top() *= glm::translate(model, component[0].origin);    // 基座位置
+
+    model = glm::translate(model, component[0].origin);     // 平移
     m_modelShader.setMat4("model", model);
+    m_modelShader.setMat4("mv", mvStack.top());
+    m_modelShader.setVec3("objectColor", component[0].color);
     ourModel[0]->Draw(m_modelShader);
+
     // 肩部
     model = glm::mat4(1.0f);
     model = glm::translate(model, component[1].origin);
     model = glm::rotate(model, glm::radians(component[1].angle), component[1].axis);
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+
+    mvStack.push(mvStack.top());
+    mvStack.top() *= model;
+
     m_modelShader.setMat4("model", model);
+    m_modelShader.setMat4("mv", mvStack.top());
+    m_modelShader.setVec3("objectColor", component[1].color);
     ourModel[1]->Draw(m_modelShader);
+
     // 大臂
     model = glm::mat4(1.0f);
     model = glm::translate(model, component[2].origin);
-    model = model * rotateAround(component[1].origin, component[1].axis, glm::radians(component[1].angle));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
     model = glm::rotate(model, glm::radians(component[2].angle), component[2].axis);
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+
+    mvStack.push(mvStack.top());
+    mvStack.top() *= model;
     m_modelShader.setMat4("model", model);
+    m_modelShader.setMat4("mv", mvStack.top());
+    m_modelShader.setVec3("objectColor", component[2].color);
     ourModel[2]->Draw(m_modelShader);
+
     // 小臂1
     model = glm::mat4(1.0f);
     model = glm::translate(model, component[3].origin);
-    model = model * rotateAround(component[1].origin, component[1].axis, glm::radians(component[1].angle));
-    model = model * rotateAround(component[2].origin, component[2].axis, glm::radians(component[2].angle));
     model = glm::rotate(model, glm::radians(component[3].angle), component[3].axis);
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+
+    mvStack.push(mvStack.top());
+    mvStack.top() *= model;
+
     m_modelShader.setMat4("model", model);
+    m_modelShader.setMat4("mv", mvStack.top());
+    m_modelShader.setVec3("objectColor", component[3].color);
     ourModel[3]->Draw(m_modelShader);
+
     // 小臂2
     model = glm::mat4(1.0f);
     model = glm::translate(model, component[4].origin);
-    model = model * rotateAround(component[1].origin, component[1].axis, glm::radians(component[1].angle));
-    model = model * rotateAround(component[2].origin, component[2].axis, glm::radians(component[2].angle));
-    model = model * rotateAround(component[3].origin, component[3].axis, glm::radians(component[3].angle));
     model = glm::rotate(model, glm::radians(component[4].angle), component[4].axis);
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+
+    mvStack.push(mvStack.top());
+    mvStack.top() *= model;
+
     m_modelShader.setMat4("model", model);
+    m_modelShader.setMat4("mv", mvStack.top());
+    m_modelShader.setVec3("objectColor", component[4].color);
     ourModel[4]->Draw(m_modelShader);
+
     // 手腕
     model = glm::mat4(1.0f);
     model = glm::translate(model, component[5].origin);
-    model = model * rotateAround(component[1].origin, component[1].axis, glm::radians(component[1].angle));
-    model = model * rotateAround(component[2].origin, component[2].axis, glm::radians(component[2].angle));
-    model = model * rotateAround(component[3].origin, component[3].axis, glm::radians(component[3].angle));
-    model = model * rotateAround(component[4].origin, component[4].axis, glm::radians(component[4].angle));
     model = glm::rotate(model, glm::radians(component[5].angle), component[5].axis);
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+
+    mvStack.push(mvStack.top());
+    mvStack.top() *= model;
+
     m_modelShader.setMat4("model", model);
+    m_modelShader.setMat4("mv", mvStack.top());
+    m_modelShader.setVec3("objectColor", component[5].color);
     ourModel[5]->Draw(m_modelShader);
+
     // 末端工具
     model = glm::mat4(1.0f);
     model = glm::translate(model, component[6].origin);
-    model = model * rotateAround(component[1].origin, component[1].axis, glm::radians(component[1].angle));
-    model = model * rotateAround(component[2].origin, component[2].axis, glm::radians(component[2].angle));
-    model = model * rotateAround(component[3].origin, component[3].axis, glm::radians(component[3].angle));
-    model = model * rotateAround(component[4].origin, component[4].axis, glm::radians(component[4].angle));
-    model = model * rotateAround(component[5].origin, component[5].axis, glm::radians(component[5].angle));
     model = glm::rotate(model, glm::radians(component[6].angle), component[6].axis);
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+
+    mvStack.push(mvStack.top());
+    mvStack.top() *= model;
+
     m_modelShader.setMat4("model", model);
+    m_modelShader.setMat4("mv", mvStack.top());
+    m_modelShader.setVec3("objectColor", component[6].color);
     ourModel[6]->Draw(m_modelShader);
 
     // 渲染光源
@@ -196,21 +240,23 @@ void CustomOpenGLWidget::paintGL()
     // glDrawArrays(GL_TRIANGLES, 0, 36);
     // m_lightVAO.release();
 
-    // 渲染坐标轴
-    m_coordShader.use();
-    model = glm::mat4(1.0f);
-    model = glm::translate(model, component[0].origin);
-    model = glm::scale(model, glm::vec3(0.1f));
-    m_coordShader.setMat4("model", model);
-    m_coordShader.setMat4("projection", projection);
-    m_coordShader.setMat4("view", view);
+    if (m_axisMode) {
+        // 渲染坐标轴
+        m_coordShader.use();
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, component[0].origin);
+        model = glm::scale(model, glm::vec3(0.1f));
+        m_coordShader.setMat4("model", model);
+        m_coordShader.setMat4("projection", projection);
+        m_coordShader.setMat4("view", view);
 
-    // glDrawArrays(GL_POINTS, 0, 1);  // 绘制第一个顶点作为点
+        // glDrawArrays(GL_POINTS, 0, 1);  // 绘制第一个顶点作为点
 
-    m_coordVAO.bind();
-    glLineWidth(5.0f);
-    glDrawArrays(GL_LINES, 0, 6);   // 从第二个顶点开始绘制三个顶点作为线段
-    m_coordVAO.release();
+        m_coordVAO.bind();
+        glLineWidth(5.0f);
+        glDrawArrays(GL_LINES, 0, 6);   // 从第二个顶点开始绘制三个顶点作为线段
+        m_coordVAO.release();
+    }
 }
 
 void CustomOpenGLWidget::resizeGL(int w, int h)
@@ -267,21 +313,21 @@ void CustomOpenGLWidget::keyReleaseEvent(QKeyEvent* event)
     update();
 }
 
-glm::mat4 CustomOpenGLWidget::rotateAround(const glm::vec3& center, const glm::vec3& axis, float angle)
+glm::mat4 CustomOpenGLWidget::rotateAround(glm::mat4& model, const glm::vec3& pivot, const glm::vec3& axis, float angle)
 {
-    // 计算旋转矩阵
-    glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), angle, axis);
+    // 首先，将模型平移到旋转中心
+    glm::mat4 translateToCenter = glm::translate(glm::mat4(1.0f), pivot);
 
-    // 创建一个平移矩阵，将旋转中心移动到原点
-    glm::mat4 translationToCenter = glm::translate(glm::mat4(1.0f), -center);
+    // 然后，创建旋转矩阵
+    glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), angle, glm::normalize(axis));
 
-    // 创建一个平移矩阵，将旋转后的点移回原来的位置
-    glm::mat4 translationFromCenter = glm::translate(glm::mat4(1.0f), center);
+    // 接着，将模型从旋转中心平移回原位置
+    glm::mat4 translateBack = glm::translate(glm::mat4(1.0f), -pivot);
 
-    // 组合矩阵以实现绕点旋转
-    glm::mat4 rotateAroundMatrix = translationFromCenter * rotationMatrix * translationToCenter;
+    // 组合变换矩阵
+    glm::mat4 transform = translateBack * rotation * translateToCenter;
 
-    return rotateAroundMatrix;
+    return transform;
 }
 
 void CustomOpenGLWidget::updateAngle(int index, float angle)
@@ -298,5 +344,27 @@ void CustomOpenGLWidget::updateAngle(int index, float angle)
         this->component[index].angle = angle;
     }
 
+    update();
+}
+
+void CustomOpenGLWidget::updateModelColor(int index, float r, float g, float b)
+{
+    if (index < 0 || index > 6) {
+        return;
+    }
+
+    this->component[index].color = glm::vec3(r, g, b);
+    update();
+}
+
+void CustomOpenGLWidget::setPolygonMode(bool flag)
+{
+    m_polygonMode = flag;
+    update();
+}
+
+void CustomOpenGLWidget::setAxisMode(bool flag)
+{
+    m_axisMode = flag;
     update();
 }

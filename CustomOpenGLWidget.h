@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions>
+#include <QOpenGLFunctions_3_3_Core>
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLShader>
 #include <QOpenGLShaderProgram>
@@ -83,6 +83,7 @@ struct Component {
     float minAngle;     // 最小旋转角度
     float maxAngle;     // 最大旋转角度
     float angle;        // 旋转角度
+    glm::vec3 color;    // 物体颜色
 };
 
 class CustomOpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
@@ -91,8 +92,11 @@ class CustomOpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 public:
     CustomOpenGLWidget(QWidget* parent = nullptr);
 
-    glm::mat4 rotateAround(const glm::vec3& center, const glm::vec3& axis, float angle);
+    glm::mat4 rotateAround(glm::mat4& model, const glm::vec3& center, const glm::vec3& axis, float angle);
     void updateAngle(int index, float angle);
+    void updateModelColor(int index, float r, float g, float b);
+    void setPolygonMode(bool flag);
+    void setAxisMode(bool flag);
 
 protected:
     void initializeGL() override;
@@ -113,4 +117,7 @@ private:
     std::string path[7];
     Model* ourModel[7];
     Component component[7];
+
+    bool m_polygonMode;
+    bool m_axisMode;
 };

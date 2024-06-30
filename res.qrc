@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/backView.png</file>
+        <file>resources/bottomView.png</file>
+        <file>resources/frontView.png</file>
+        <file>resources/leftView.png</file>
+        <file>resources/rightView.png</file>
+        <file>resources/topView.png</file>
+    </qresource>
+</RCC>

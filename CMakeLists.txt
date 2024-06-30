@@ -36,6 +36,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         CustomOpenGLWidget.h CustomOpenGLWidget.cpp
         coordVertexShader.glsl
         coordFragmentShader.glsl
+        res.qrc
 
     )
 else()
