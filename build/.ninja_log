@@ -1,0 +1,26 @@
+# ninja log v5
+29	1655	7416187488360073	RobotTwin_autogen/timestamp	36c0502a9f81a517
+29	1655	7416187488360073	C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/timestamp	36c0502a9f81a517
+29	1655	7416187488360073	C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/mocs_compilation.cpp	36c0502a9f81a517
+1605	1738	7416058086881915	CMakeFiles/RobotTwin.dir/RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp.obj	8f983b800ebd0d75
+29	1655	7416187488360073	RobotTwin_autogen/mocs_compilation.cpp	36c0502a9f81a517
+1588	2132	7416058090857762	CMakeFiles/RobotTwin.dir/stb_image.cpp.obj	5f7a555a2a15830c
+1400	1565	7416058085151927	RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp	ea1c04c416df6c97
+1400	1565	7416058085151927	C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp	ea1c04c416df6c97
+1572	5007	7416058119590551	CMakeFiles/RobotTwin.dir/main.cpp.obj	d00e79a1eee17411
+1657	9613	7416187570469519	CMakeFiles/RobotTwin.dir/RobotTwin_autogen/mocs_compilation.cpp.obj	b59580d137a3878d
+1678	9763	7416187572034006	CMakeFiles/RobotTwin.dir/CustomOpenGLWidget.cpp.obj	3e8b00f340fff28b
+1667	9847	7416187572884003	CMakeFiles/RobotTwin.dir/MainWindow.cpp.obj	65d10c4d65f2621a
+9848	10439	7416187578161964	RobotTwin.exe	79c144ba043feed8
+17	462	7416191955217593	RobotTwin_autogen/timestamp	36c0502a9f81a517
+17	462	7416191955217593	RobotTwin_autogen/mocs_compilation.cpp	36c0502a9f81a517
+17	462	7416191955217593	C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/timestamp	36c0502a9f81a517
+17	462	7416191955217593	C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/mocs_compilation.cpp	36c0502a9f81a517
+472	6856	7416192025422446	CMakeFiles/RobotTwin.dir/MainWindow.cpp.obj	65d10c4d65f2621a
+6856	7250	7416192028824528	RobotTwin.exe	79c144ba043feed8
+16	468	7416192867719098	RobotTwin_autogen/timestamp	36c0502a9f81a517
+16	468	7416192867719098	RobotTwin_autogen/mocs_compilation.cpp	36c0502a9f81a517
+16	468	7416192867719098	C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/timestamp	36c0502a9f81a517
+16	468	7416192867719098	C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/mocs_compilation.cpp	36c0502a9f81a517
+479	6813	7416192937504935	CMakeFiles/RobotTwin.dir/MainWindow.cpp.obj	65d10c4d65f2621a
+6813	7197	7416192940822116	RobotTwin.exe	79c144ba043feed8

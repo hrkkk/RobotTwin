@@ -37,6 +37,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         coordVertexShader.glsl
         coordFragmentShader.glsl
         res.qrc
+        trackVertexShader.glsl
+        trackFragmentShader.glsl
 
     )
 else()

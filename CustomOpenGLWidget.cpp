@@ -4,19 +4,27 @@
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 glm::vec4 backgroundColor(glm::vec4(0.94f, 0.94f, 0.94f, 1.0f));
+std::vector<glm::vec3> gridVertices;
+std::vector<glm::vec4> trackVertices;
+const size_t maxTrackPoint = 1000;
+glm::vec3 toolPosition = glm::vec3(0.0f);
 
 CustomOpenGLWidget::CustomOpenGLWidget(QWidget* parent): QOpenGLWidget(parent)
 {
     this->setFocusPolicy(Qt::StrongFocus);
+
+    initGrid();
 }
 
 void CustomOpenGLWidget::initializeGL()
 {
     initializeOpenGLFunctions();
 
-    m_modelShader = Shader("../RobotTwin/modelVertexShader.glsl", "../RobotTwin/modelFragmentShader.glsl");
-    m_lightShader = Shader("../RobotTwin/lightVertexShader.glsl", "../RobotTwin/lightFragmentShader.glsl");
-    m_coordShader = Shader("../RobotTwin/coordVertexShader.glsl", "../RobotTwin/coordFragmentShader.glsl");
+    m_modelShader = Shader("../modelVertexShader.glsl", "../modelFragmentShader.glsl");
+    m_lightShader = Shader("../lightVertexShader.glsl", "../lightFragmentShader.glsl");
+    m_coordShader = Shader("../coordVertexShader.glsl", "../coordFragmentShader.glsl");
+    m_gridShader = Shader("../coordVertexShader.glsl", "../coordFragmentShader.glsl");
+    m_trackShader = Shader("../trackVertexShader.glsl", "../trackFragmentShader.glsl");
 
     // 创建光源VAO
     m_lightVAO.create();
@@ -44,6 +52,29 @@ void CustomOpenGLWidget::initializeGL()
     glEnableVertexAttribArray(1);
     m_coordVAO.release();
 
+    // 创建网格VAO
+    m_gridVAO.create();
+    m_gridVAO.bind();
+    // 创建网格VBO
+    unsigned int gridVBO;
+    glGenBuffers(1, &gridVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, gridVBO);
+    glBufferData(GL_ARRAY_BUFFER, gridVertices.size() * sizeof(glm::vec3), gridVertices.data(), GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    m_gridVAO.release();
+
+    // 创建轨迹VAO
+    m_trackVAO.create();
+    m_trackVAO.bind();
+    // 创建轨迹VAO
+    glGenBuffers(1, &m_trackVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_trackVBO);
+    glBufferData(GL_ARRAY_BUFFER, maxTrackPoint * sizeof(glm::vec4), nullptr, GL_DYNAMIC_DRAW);
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    m_gridVAO.release();
+
     path[0] = "C:\\Users\\hrkkk\\Desktop\\model\\dizuo.obj";
     path[1] = "C:\\Users\\hrkkk\\Desktop\\model\\jizuo.obj";
     path[2] = "C:\\Users\\hrkkk\\Desktop\\model\\dabi.obj";
@@ -61,49 +92,56 @@ void CustomOpenGLWidget::initializeGL()
         glm::vec3(0.0f, 0.0f, 0.0f),
         -180,
         180,
-        0
+        0,
+        glm::vec3(1.0f, 0.0f, 0.0f)
     };
     component[1] = {
         glm::vec3(0.0f, 0.059f, 0.0f),
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
         180,
-        0
+        -90,
+        glm::vec3(0.0f, 1.0f, 0.0f)
     };
     component[2] = {
         glm::vec3(0.0f, 0.215f, 0.0f),
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
         180,
-        0
+        90,
+        glm::vec3(0.0f, 0.0f, 1.0f)
     };
     component[3] = {
         glm::vec3(-0.266f, 0.001f, 0.0f),
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
         180,
-        0
+        -90,
+        glm::vec3(1.0f, 1.0f, 0.0f)
     };
     component[4] = {
         glm::vec3(0.013f, 0.0f, 0.065f),
         glm::vec3(1.0f, 0.0f, 0.0f),
         -180,
         180,
-        0
+        0,
+        glm::vec3(0.0f, 1.0f, 1.0f)
     };
     component[5] = {
         glm::vec3(-0.23f, 0.0f, 0.0f),
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
         180,
-        0
+        0,
+        glm::vec3(1.0f, 0.0f, 1.0f)
     };
     component[6] = {
         glm::vec3(-0.035f, 0.0f, 0.0f),
         glm::vec3(1.0f, 0.0f, 0.0f),
         -180,
         180,
-        0
+        0,
+        glm::vec3(1.0f, 0.5f, 0.0f)
     };
 
     glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
@@ -140,10 +178,11 @@ void CustomOpenGLWidget::paintGL()
     mvStack.push(view);
 
     // 基座
-    mvStack.push(mvStack.top());
-    mvStack.top() *= glm::translate(model, component[0].origin);    // 基座位置
-
     model = glm::translate(model, component[0].origin);     // 平移
+
+    mvStack.push(mvStack.top());
+    mvStack.top() *= model;    // 基座位置
+
     m_modelShader.setMat4("model", model);
     m_modelShader.setMat4("mv", mvStack.top());
     m_modelShader.setVec3("objectColor", component[0].color);
@@ -227,6 +266,8 @@ void CustomOpenGLWidget::paintGL()
     m_modelShader.setVec3("objectColor", component[6].color);
     ourModel[6]->Draw(m_modelShader);
 
+    glm::vec4 pos = projection * mvStack.top() * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+
     // 渲染光源
     // m_lightShader.use();
     // model = glm::mat4(1.0f);
@@ -244,7 +285,7 @@ void CustomOpenGLWidget::paintGL()
         // 渲染坐标轴
         m_coordShader.use();
         model = glm::mat4(1.0f);
-        model = glm::translate(model, component[0].origin);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));
         model = glm::scale(model, glm::vec3(0.1f));
         m_coordShader.setMat4("model", model);
         m_coordShader.setMat4("projection", projection);
@@ -256,6 +297,41 @@ void CustomOpenGLWidget::paintGL()
         glLineWidth(5.0f);
         glDrawArrays(GL_LINES, 0, 6);   // 从第二个顶点开始绘制三个顶点作为线段
         m_coordVAO.release();
+    }
+
+    if (m_gridMode) {
+        // 渲染网格图
+        m_gridShader.use();
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.1f));
+        m_gridShader.setMat4("model", model);
+        m_gridShader.setMat4("projection", projection);
+        m_gridShader.setMat4("view", view);
+
+        m_gridVAO.bind();
+        glLineWidth(1.0f);
+        glDrawArrays(GL_LINES, 0, gridVertices.size());
+        m_gridVAO.release();
+    }
+
+    if (m_trackMode) {
+        // 渲染轨迹
+        trackVertices.push_back(pos);
+        // 添加轨迹点
+        glBindBuffer(GL_ARRAY_BUFFER, m_trackVBO);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, trackVertices.size() * sizeof(glm::vec4), trackVertices.data());
+        glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+        // 绘制轨迹线
+        m_trackShader.use();
+        m_trackShader.setVec3("color", glm::vec3(1.0f, 0.0f, 0.0f));
+        m_trackVAO.bind();
+        glLineWidth(2.0f);
+        glDrawArrays(GL_LINE_STRIP, 0, trackVertices.size());
+        m_trackVAO.release();
     }
 }
 
@@ -332,7 +408,7 @@ glm::mat4 CustomOpenGLWidget::rotateAround(glm::mat4& model, const glm::vec3& pi
 
 void CustomOpenGLWidget::updateAngle(int index, float angle)
 {
-    if (index < 0 || index > 6) {
+    if (index < 0 || index >= 7) {
         return;
     }
 
@@ -349,7 +425,7 @@ void CustomOpenGLWidget::updateAngle(int index, float angle)
 
 void CustomOpenGLWidget::updateModelColor(int index, float r, float g, float b)
 {
-    if (index < 0 || index > 6) {
+    if (index < 0 || index >= 7) {
         return;
     }
 
@@ -367,4 +443,61 @@ void CustomOpenGLWidget::setAxisMode(bool flag)
 {
     m_axisMode = flag;
     update();
+}
+
+void CustomOpenGLWidget::setGridMode(bool flag)
+{
+    m_gridMode = flag;
+    update();
+}
+
+void CustomOpenGLWidget::initGrid()
+{
+    // 绘制横向的GRID_SIZE个线段
+    for (int i = 0; i <= GRID_SIZE; ++i) {
+        // 线段起点
+        gridVertices.push_back(glm::vec3(-10.0f, 0.0f, -10.0f + i * 2.0f));
+        // 线段终点
+        gridVertices.push_back(glm::vec3(10.0f, 0.0f, -10.0f + i * 2.0f));
+    }
+    // 绘制纵向的GRID_SIZE个线段
+    for (int i = 0; i <= GRID_SIZE; ++i) {
+        // 线段起点
+        gridVertices.push_back(glm::vec3(-10.0f + i * 2.0f, 0.0f, -10.0f));
+        // 线段终点
+        gridVertices.push_back(glm::vec3(-10.0f + i * 2.0f, 0.0f, 10.0f));
+    }
+}
+
+void CustomOpenGLWidget::setTrackMode(bool flag)
+{
+    m_trackMode = flag;
+    if (m_trackMode) {
+        trackVertices.clear();
+    }
+    update();
+}
+
+void CustomOpenGLWidget::renderTrajectory()
+{
+    // trackVertices.push_back(toolPosition);
+    // // 计算要添加的点的数量
+    // size_t pointsToAdd = 1;
+    // // 添加轨迹点
+    // glBindBuffer(GL_ARRAY_BUFFER, m_trackVBO);
+    // glBufferSubData(GL_ARRAY_BUFFER, 0, pointsToAdd * sizeof(glm::vec3), trackVertices.data());
+    // glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    // // 绘制轨迹线
+    // m_trackShader.use();
+    // model = glm::mat4(1.0f);
+    // model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+    // model = glm::scale(model, glm::vec3(0.1f));
+    // m_trackShader.setMat4("model", model);
+    // m_trackShader.setMat4("projection", projection);
+    // m_trackShader.setMat4("view", view);
+
+    // m_trackVAO.bind();
+    // glDrawArrays(GL_LINE_STRIP, 0, trackVertices.size());
+    // m_trackVAO.release();
 }

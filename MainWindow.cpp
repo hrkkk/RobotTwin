@@ -125,6 +125,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->checkBox_axisMode, &QCheckBox::clicked, this, [this](bool isChecked) {
         ui->openGLWidget->setAxisMode(isChecked);
     });
+    connect(ui->checkBox_gridMode, &QCheckBox::clicked, this, [this](bool isChecked) {
+        ui->openGLWidget->setGridMode(isChecked);
+    });
+    connect(ui->checkBox_trackMode, &QCheckBox::clicked, this, [this](bool isChecked) {
+        ui->openGLWidget->setTrackMode(isChecked);
+    });
 }
 
 MainWindow::~MainWindow()
