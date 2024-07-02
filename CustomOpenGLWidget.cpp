@@ -1,6 +1,7 @@
 #include "CustomOpenGLWidget.h"
 
 #include <stack>
+#include <QTimer>
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 glm::vec4 backgroundColor(glm::vec4(0.94f, 0.94f, 0.94f, 1.0f));
@@ -8,6 +9,8 @@ std::vector<glm::vec3> gridVertices;
 std::vector<glm::vec4> trackVertices;
 const size_t maxTrackPoint = 1000;
 glm::vec3 toolPosition = glm::vec3(0.0f);
+
+QTimer motionTimer;
 
 CustomOpenGLWidget::CustomOpenGLWidget(QWidget* parent): QOpenGLWidget(parent)
 {
@@ -20,11 +23,11 @@ void CustomOpenGLWidget::initializeGL()
 {
     initializeOpenGLFunctions();
 
-    m_modelShader = Shader("../modelVertexShader.glsl", "../modelFragmentShader.glsl");
-    m_lightShader = Shader("../lightVertexShader.glsl", "../lightFragmentShader.glsl");
-    m_coordShader = Shader("../coordVertexShader.glsl", "../coordFragmentShader.glsl");
-    m_gridShader = Shader("../coordVertexShader.glsl", "../coordFragmentShader.glsl");
-    m_trackShader = Shader("../trackVertexShader.glsl", "../trackFragmentShader.glsl");
+    m_modelShader = Shader("../../modelVertexShader.glsl", "../../modelFragmentShader.glsl");
+    m_lightShader = Shader("../../lightVertexShader.glsl", "../../lightFragmentShader.glsl");
+    m_coordShader = Shader("../../coordVertexShader.glsl", "../../coordFragmentShader.glsl");
+    m_gridShader = Shader("../../coordVertexShader.glsl", "../../coordFragmentShader.glsl");
+    m_trackShader = Shader("../../trackVertexShader.glsl", "../../trackFragmentShader.glsl");
 
     // 创建光源VAO
     m_lightVAO.create();
@@ -75,21 +78,13 @@ void CustomOpenGLWidget::initializeGL()
     glEnableVertexAttribArray(0);
     m_gridVAO.release();
 
-    // path[0] = "C:\\Users\\hrkkk\\Desktop\\model\\dizuo.obj";
-    // path[1] = "C:\\Users\\hrkkk\\Desktop\\model\\jizuo.obj";
-    // path[2] = "C:\\Users\\hrkkk\\Desktop\\model\\dabi.obj";
-    // path[3] = "C:\\Users\\hrkkk\\Desktop\\model\\pianyi.obj";
-    // path[4] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaobi.obj";
-    // path[5] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaoxiaobi.obj";
-    // path[6] = "C:\\Users\\hrkkk\\Desktop\\model\\zhixingqi.obj";
-
-    path[0] = "..\\model\\base.obj";
-    path[1] = "..\\model\\shoulder.obj";
-    path[2] = "..\\model\\arm.obj";
-    path[3] = "..\\model\\elbow.obj";
-    path[4] = "..\\model\\forearm.obj";
-    path[5] = "..\\model\\wrist.obj";
-    path[6] = "..\\model\\tool.obj";
+    path[0] = "../../model/base.obj";
+    path[1] = "../../model/shoulder.obj";
+    path[2] = "../../model/arm.obj";
+    path[3] = "../../model/elbow.obj";
+    path[4] = "../../model/forearm.obj";
+    path[5] = "../../model/wrist.obj";
+    path[6] = "../../model/tool.obj";
 
     for (int i = 0; i < 7; i++) {
         ourModel[i] = new Model(path[i]);
@@ -525,3 +520,48 @@ void CustomOpenGLWidget::renderTrajectory()
     // glDrawArrays(GL_LINE_STRIP, 0, trackVertices.size());
     // m_trackVAO.release();
 }
+
+void CustomOpenGLWidget::setView(const std::string& view)
+{
+    camera.setViewDirection(view);
+    update();
+}
+
+// void CustomOpenGLWidget::motionSlowly(float* targetAngle)
+// {
+//     int motionDir[6];
+
+//     for (int i = 0; i < 6; ++i) {
+//         if (targetAngle[i] >= this->component[i + 1].angle) {
+//             motionDir[i] = 1;
+//         } else {
+//             motionDir[i] = -1;
+//         }
+//     }
+
+//     connect(&motionTimer, &QTimer::timeout, this, [=]() {
+//         static bool inPlace[6] = { false };
+//         for (int i = 0; i < 6; i++) {
+//             this->component[i + 1].angle += (motionDir[i] * 1.0f);
+//             if (component[i + 1].angle >= component[i + 1].maxAngle) {
+//                 component[i + 1].angle = component[i + 1].maxAngle;
+//                 inPlace[i] = true;
+//             } else if (component[i + 1].angle <= component[i + 1].minAngle) {
+//                 component[i + 1].angle = component[i + 1].minAngle;
+//                 inPlace[i] = true;
+//             }
+//         }
+//         update();
+//         bool flag = true;
+//         for (int i = 0; i < 6; i++) {
+//             if (!inPlace[i]) {
+//                 flag = false;
+//                 break;
+//             }
+//         }
+//         if (flag) {
+//             motionTimer.stop();
+//         }
+//     });
+//     motionTimer.start(40);
+// }

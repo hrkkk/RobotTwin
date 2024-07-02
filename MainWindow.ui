@@ -31,7 +31,7 @@
          </font>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -388,7 +388,7 @@
           <item>
            <layout class="QGridLayout" name="gridLayout">
             <item row="1" column="0">
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="btn_left">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -411,7 +411,7 @@
              </widget>
             </item>
             <item row="1" column="2">
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="btn_right">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -434,7 +434,7 @@
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QPushButton" name="pushButton_6">
+             <widget class="QPushButton" name="btn_down">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -457,7 +457,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="btn_front">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -480,7 +480,7 @@
              </widget>
             </item>
             <item row="1" column="3">
-             <widget class="QPushButton" name="pushButton_4">
+             <widget class="QPushButton" name="btn_back">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -503,7 +503,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QPushButton" name="pushButton_7">
+             <widget class="QPushButton" name="btn_up">
               <property name="minimumSize">
                <size>
                 <width>30</width>

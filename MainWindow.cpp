@@ -166,6 +166,25 @@ MainWindow::MainWindow(QWidget *parent)
             label->setText(QString::number(0));
         }
     });
+
+    connect(ui->btn_front, &QPushButton::clicked, this, [=]() {
+        ui->openGLWidget->setView("front");
+    });
+    connect(ui->btn_back, &QPushButton::clicked, this, [=]() {
+        ui->openGLWidget->setView("back");
+    });
+    connect(ui->btn_left, &QPushButton::clicked, this, [=]() {
+        ui->openGLWidget->setView("left");
+    });
+    connect(ui->btn_right, &QPushButton::clicked, this, [=]() {
+        ui->openGLWidget->setView("right");
+    });
+    connect(ui->btn_up, &QPushButton::clicked, this, [=]() {
+        ui->openGLWidget->setView("up");
+    });
+    connect(ui->btn_down, &QPushButton::clicked, this, [=]() {
+        ui->openGLWidget->setView("down");
+    });
 }
 
 MainWindow::~MainWindow()
@@ -200,6 +219,7 @@ void MainWindow::startCacl()
     }
 
     ui->openGLWidget->updateAllJoints(degree);
+    // ui->openGLWidget->motionSlowly(degree);
 
     for (int i = 1; i <= 6; ++i) {
         QLabel* label = ui->tab->findChild<QLabel*>(QString("label_joint%1").arg(i));

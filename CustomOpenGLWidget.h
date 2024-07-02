@@ -104,6 +104,8 @@ public:
     void setTrackMode(bool flag);
     void initGrid();
     void renderTrajectory();
+    void setView(const std::string& dir);
+    // void motionSlowly(float* targetAngle);
 
 protected:
     void initializeGL() override;

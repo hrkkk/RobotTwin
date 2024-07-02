@@ -1,0 +1,30 @@
+{
+	"BUILD_DIR" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug/RobotTwin_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/hrkkk/Desktop/RobotTwin",
+	"CMAKE_SOURCE_DIR" : "C:/Users/hrkkk/Desktop/RobotTwin",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug/RobotTwin_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/leftView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/rightView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/frontView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/topView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/backView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/bottomView.png"
+	],
+	"LOCK_FILE" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug/CMakeFiles/RobotTwin_autogen.dir/AutoRcc_res_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "res" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_res.cpp",
+	"RCC_EXECUTABLE" : "D:/Qt6/6.6.1/msvc2019_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug/CMakeFiles/RobotTwin_autogen.dir/AutoRcc_res_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/hrkkk/Desktop/RobotTwin/res.qrc",
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}
