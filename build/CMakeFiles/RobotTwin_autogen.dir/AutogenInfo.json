@@ -333,6 +333,16 @@
 		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-relwithdebinfo.cmake",
 		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsAdditionalTargetInfo.cmake",
 		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessTargets.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfigVersion.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfigVersionImpl.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfig.cmake",
+		"D:/CMake/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortDependencies.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets-debug.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets-relwithdebinfo.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortAdditionalTargetInfo.cmake",
+		"D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortVersionlessTargets.cmake",
 		"D:/CMake/share/cmake-3.29/Modules/GNUInstallDirs.cmake",
 		"C:/Users/hrkkk/Desktop/RobotTwin/res.qrc"
 	],
@@ -342,6 +352,12 @@
 	"DEP_FILE_RULE_NAME" : "RobotTwin_autogen/timestamp",
 	"HEADERS" : 
 	[
+		[
+			"C:/Users/hrkkk/Desktop/RobotTwin/Arm_IK.h",
+			"MU",
+			"EWIEGA46WW/moc_Arm_IK.cpp",
+			null
+		],
 		[
 			"C:/Users/hrkkk/Desktop/RobotTwin/CustomOpenGLWidget.h",
 			"MU",
@@ -373,6 +389,12 @@
 			null
 		],
 		[
+			"C:/Users/hrkkk/Desktop/RobotTwin/serialport.h",
+			"MU",
+			"EWIEGA46WW/moc_serialport.cpp",
+			null
+		],
+		[
 			"C:/Users/hrkkk/Desktop/RobotTwin/shader.h",
 			"MU",
 			"EWIEGA46WW/moc_shader.cpp",
@@ -394,6 +416,7 @@
 		"QT_GUI_LIB",
 		"QT_OPENGLWIDGETS_LIB",
 		"QT_OPENGL_LIB",
+		"QT_SERIALPORT_LIB",
 		"QT_WIDGETS_LIB",
 		"UNICODE",
 		"WIN32",
@@ -420,6 +443,7 @@
 		"D:/Qt6/6.6.1/msvc2019_64/mkspecs/win32-msvc",
 		"D:/Qt6/6.6.1/msvc2019_64/include/QtWidgets",
 		"D:/Qt6/6.6.1/msvc2019_64/include/QtGui",
+		"D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort",
 		"D:/Qt6/6.6.1/msvc2019_64/include/QtOpenGLWidgets",
 		"D:/Qt6/6.6.1/msvc2019_64/include/QtOpenGL"
 	],
@@ -447,9 +471,11 @@
 	"SETTINGS_FILE" : "C:/Users/hrkkk/Desktop/RobotTwin/build/CMakeFiles/RobotTwin_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "C:/Users/hrkkk/Desktop/RobotTwin/Arm_IK.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/CustomOpenGLWidget.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/MainWindow.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/main.cpp", "MU", null ],
+		[ "C:/Users/hrkkk/Desktop/RobotTwin/serialport.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/stb_image.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],

@@ -210,6 +210,8 @@ RobotTwin_autogen/timestamp: \
 	C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/assimp/include/assimp/vector2.inl \
 	C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/assimp/include/assimp/vector3.h \
 	C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/assimp/include/assimp/vector3.inl \
+	C:/Users/hrkkk/Desktop/RobotTwin/Arm_IK.cpp \
+	C:/Users/hrkkk/Desktop/RobotTwin/Arm_IK.h \
 	C:/Users/hrkkk/Desktop/RobotTwin/CMakeLists.txt \
 	C:/Users/hrkkk/Desktop/RobotTwin/CustomOpenGLWidget.cpp \
 	C:/Users/hrkkk/Desktop/RobotTwin/CustomOpenGLWidget.h \
@@ -224,6 +226,8 @@ RobotTwin_autogen/timestamp: \
 	C:/Users/hrkkk/Desktop/RobotTwin/mesh.h \
 	C:/Users/hrkkk/Desktop/RobotTwin/model.h \
 	C:/Users/hrkkk/Desktop/RobotTwin/res.qrc \
+	C:/Users/hrkkk/Desktop/RobotTwin/serialport.cpp \
+	C:/Users/hrkkk/Desktop/RobotTwin/serialport.h \
 	C:/Users/hrkkk/Desktop/RobotTwin/shader.h \
 	C:/Users/hrkkk/Desktop/RobotTwin/stb_image.cpp \
 	C:/Users/hrkkk/Desktop/RobotTwin/stb_image.h \
@@ -257,6 +261,7 @@ RobotTwin_autogen/timestamp: \
 	D:/CMake/share/cmake-3.29/Modules/Platform/Windows-MSVC.cmake \
 	D:/CMake/share/cmake-3.29/Modules/Platform/Windows.cmake \
 	D:/CMake/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/include/QtCore/QByteArray \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtCore/QDebug \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtCore/QList \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtCore/QObject \
@@ -451,6 +456,12 @@ RobotTwin_autogen/timestamp: \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtOpenGLWidgets/qopenglwidget.h \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtOpenGLWidgets/qtopenglwidgetsexports.h \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtOpenGLWidgets/qtopenglwidgetsglobal.h \
+	D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/QSerialPort \
+	D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/QSerialPortInfo \
+	D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qserialport.h \
+	D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qserialportglobal.h \
+	D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qserialportinfo.h \
+	D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qtserialportexports.h \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtWidgets/QMainWindow \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtWidgets/QWidget \
 	D:/Qt6/6.6.1/msvc2019_64/include/QtWidgets/qmainwindow.h \
@@ -638,6 +649,15 @@ RobotTwin_autogen/timestamp: \
 	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-relwithdebinfo.cmake \
 	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets.cmake \
 	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessTargets.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortAdditionalTargetInfo.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfig.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfigVersion.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortConfigVersionImpl.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortDependencies.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets-debug.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets-relwithdebinfo.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortTargets.cmake \
+	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6SerialPort/Qt6SerialPortVersionlessTargets.cmake \
 	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginAdditionalTargetInfo.cmake \
 	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginConfig.cmake \
 	D:/Qt6/6.6.1/msvc2019_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginTargets-debug.cmake \

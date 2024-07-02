@@ -1,4 +1,8 @@
 C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/EWIEGA46WW/moc_MainWindow.cpp: C:/Users/hrkkk/Desktop/RobotTwin/MainWindow.h \
+  C:/Users/hrkkk/Desktop/RobotTwin/Arm_IK.h \
+  C:/Users/hrkkk/Desktop/RobotTwin/serialport.h \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtCore/QByteArray \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtCore/QObject \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/q20functional.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/q20memory.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/q20type_traits.h \
@@ -41,6 +45,7 @@ C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/EWIEGA46WW/moc_MainWind
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/qglobalstatic.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/qhash.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/qhashfunctions.h \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtCore/qiodevice.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/qiodevicebase.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/qiterable.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtCore/qiterator.h \
@@ -137,6 +142,12 @@ C:/Users/hrkkk/Desktop/RobotTwin/build/RobotTwin_autogen/EWIEGA46WW/moc_MainWind
   D:/Qt6/6.6.1/msvc2019_64/include/QtGui/qtransform.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtGui/qwindowdefs.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtGui/qwindowdefs_win.h \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/QSerialPort \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/QSerialPortInfo \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qserialport.h \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qserialportglobal.h \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qserialportinfo.h \
+  D:/Qt6/6.6.1/msvc2019_64/include/QtSerialPort/qtserialportexports.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtWidgets/QMainWindow \
   D:/Qt6/6.6.1/msvc2019_64/include/QtWidgets/qmainwindow.h \
   D:/Qt6/6.6.1/msvc2019_64/include/QtWidgets/qsizepolicy.h \

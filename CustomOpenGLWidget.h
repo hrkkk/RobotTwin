@@ -95,7 +95,8 @@ public:
     CustomOpenGLWidget(QWidget* parent = nullptr);
 
     glm::mat4 rotateAround(glm::mat4& model, const glm::vec3& center, const glm::vec3& axis, float angle);
-    void updateAngle(int index, float angle);
+    void updateSingleJoint(int index, float angle);
+    void updateAllJoints(float* angles);
     void updateModelColor(int index, float r, float g, float b);
     void setPolygonMode(bool flag);
     void setGridMode(bool flag);

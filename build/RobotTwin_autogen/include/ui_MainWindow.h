@@ -13,16 +13,19 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "CustomOpenGLWidget.h"
@@ -33,35 +36,37 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout_7;
+    QHBoxLayout *horizontalLayout_9;
     CustomOpenGLWidget *openGLWidget;
     QTabWidget *tabWidget;
     QWidget *tab;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
-    QLabel *label_angle1;
+    QLabel *label_joint1;
     QSlider *slider1;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_2;
-    QLabel *label_angle2;
+    QLabel *label_joint2;
     QSlider *slider2;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_3;
-    QLabel *label_angle3;
+    QLabel *label_joint3;
     QSlider *slider3;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_4;
-    QLabel *label_angle4;
+    QLabel *label_joint4;
     QSlider *slider4;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_5;
-    QLabel *label_angle5;
+    QLabel *label_joint5;
     QSlider *slider5;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_6;
-    QLabel *label_angle6;
+    QLabel *label_joint6;
     QSlider *slider6;
+    QPushButton *btn_reset;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_7;
@@ -98,8 +103,46 @@ public:
     QCheckBox *checkBox_polygonMode;
     QCheckBox *checkBox_trackMode;
     QSpacerItem *verticalSpacer_2;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QWidget *tab_4;
+    QVBoxLayout *verticalLayout_6;
+    QGroupBox *groupBox;
+    QVBoxLayout *verticalLayout_5;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *label_16;
+    QComboBox *comboBox_serialList;
+    QPushButton *btn_searchSerial;
+    QPushButton *btn_connectSerial;
+    QLabel *label_17;
+    QTextEdit *textEdit_input;
+    QGroupBox *groupBox_2;
+    QFormLayout *formLayout;
+    QLabel *label_18;
+    QLineEdit *lineEdit_x;
+    QLabel *label_19;
+    QLineEdit *lineEdit_y;
+    QLabel *label_20;
+    QLineEdit *lineEdit_z;
+    QLabel *label_21;
+    QLabel *label_22;
+    QLabel *label_23;
+    QLineEdit *lineEdit_alpha;
+    QLineEdit *lineEdit_beta;
+    QLineEdit *lineEdit_gamma;
+    QPushButton *btn_cacl;
+    QGroupBox *groupBox_3;
+    QGridLayout *gridLayout_2;
+    QLineEdit *lineEdit_calc_best_3;
+    QLineEdit *lineEdit_calc_best_5;
+    QLineEdit *lineEdit_calc_best_2;
+    QLineEdit *lineEdit_calc_best_4;
+    QLineEdit *lineEdit_calc_best_1;
+    QLineEdit *lineEdit_calc_best_6;
+    QPushButton *btn_send;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QLabel *label_25;
+    QLabel *label_serialState;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -108,12 +151,15 @@ public:
         MainWindow->resize(1134, 778);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        horizontalLayout = new QHBoxLayout(centralwidget);
-        horizontalLayout->setObjectName("horizontalLayout");
+        verticalLayout_7 = new QVBoxLayout(centralwidget);
+        verticalLayout_7->setObjectName("verticalLayout_7");
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
+        horizontalLayout_9->setContentsMargins(0, -1, -1, -1);
         openGLWidget = new CustomOpenGLWidget(centralwidget);
         openGLWidget->setObjectName("openGLWidget");
 
-        horizontalLayout->addWidget(openGLWidget);
+        horizontalLayout_9->addWidget(openGLWidget);
 
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
@@ -131,10 +177,10 @@ public:
 
         horizontalLayout_2->addWidget(label);
 
-        label_angle1 = new QLabel(tab);
-        label_angle1->setObjectName("label_angle1");
+        label_joint1 = new QLabel(tab);
+        label_joint1->setObjectName("label_joint1");
 
-        horizontalLayout_2->addWidget(label_angle1, 0, Qt::AlignRight);
+        horizontalLayout_2->addWidget(label_joint1, 0, Qt::AlignRight);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -143,6 +189,7 @@ public:
         slider1->setObjectName("slider1");
         slider1->setMinimum(-180);
         slider1->setMaximum(180);
+        slider1->setValue(0);
         slider1->setOrientation(Qt::Horizontal);
 
         verticalLayout->addWidget(slider1);
@@ -154,10 +201,10 @@ public:
 
         horizontalLayout_3->addWidget(label_2);
 
-        label_angle2 = new QLabel(tab);
-        label_angle2->setObjectName("label_angle2");
+        label_joint2 = new QLabel(tab);
+        label_joint2->setObjectName("label_joint2");
 
-        horizontalLayout_3->addWidget(label_angle2, 0, Qt::AlignRight);
+        horizontalLayout_3->addWidget(label_joint2, 0, Qt::AlignRight);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -166,6 +213,7 @@ public:
         slider2->setObjectName("slider2");
         slider2->setMinimum(-180);
         slider2->setMaximum(180);
+        slider2->setValue(0);
         slider2->setOrientation(Qt::Horizontal);
 
         verticalLayout->addWidget(slider2);
@@ -177,10 +225,10 @@ public:
 
         horizontalLayout_4->addWidget(label_3);
 
-        label_angle3 = new QLabel(tab);
-        label_angle3->setObjectName("label_angle3");
+        label_joint3 = new QLabel(tab);
+        label_joint3->setObjectName("label_joint3");
 
-        horizontalLayout_4->addWidget(label_angle3, 0, Qt::AlignRight);
+        horizontalLayout_4->addWidget(label_joint3, 0, Qt::AlignRight);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
@@ -189,6 +237,7 @@ public:
         slider3->setObjectName("slider3");
         slider3->setMinimum(-180);
         slider3->setMaximum(180);
+        slider3->setValue(0);
         slider3->setOrientation(Qt::Horizontal);
 
         verticalLayout->addWidget(slider3);
@@ -200,10 +249,10 @@ public:
 
         horizontalLayout_5->addWidget(label_4);
 
-        label_angle4 = new QLabel(tab);
-        label_angle4->setObjectName("label_angle4");
+        label_joint4 = new QLabel(tab);
+        label_joint4->setObjectName("label_joint4");
 
-        horizontalLayout_5->addWidget(label_angle4, 0, Qt::AlignRight);
+        horizontalLayout_5->addWidget(label_joint4, 0, Qt::AlignRight);
 
 
         verticalLayout->addLayout(horizontalLayout_5);
@@ -223,10 +272,10 @@ public:
 
         horizontalLayout_6->addWidget(label_5);
 
-        label_angle5 = new QLabel(tab);
-        label_angle5->setObjectName("label_angle5");
+        label_joint5 = new QLabel(tab);
+        label_joint5->setObjectName("label_joint5");
 
-        horizontalLayout_6->addWidget(label_angle5, 0, Qt::AlignRight);
+        horizontalLayout_6->addWidget(label_joint5, 0, Qt::AlignRight);
 
 
         verticalLayout->addLayout(horizontalLayout_6);
@@ -246,10 +295,10 @@ public:
 
         horizontalLayout_7->addWidget(label_6);
 
-        label_angle6 = new QLabel(tab);
-        label_angle6->setObjectName("label_angle6");
+        label_joint6 = new QLabel(tab);
+        label_joint6->setObjectName("label_joint6");
 
-        horizontalLayout_7->addWidget(label_angle6, 0, Qt::AlignRight);
+        horizontalLayout_7->addWidget(label_joint6, 0, Qt::AlignRight);
 
 
         verticalLayout->addLayout(horizontalLayout_7);
@@ -261,6 +310,11 @@ public:
         slider6->setOrientation(Qt::Horizontal);
 
         verticalLayout->addWidget(slider6);
+
+        btn_reset = new QPushButton(tab);
+        btn_reset->setObjectName("btn_reset");
+
+        verticalLayout->addWidget(btn_reset);
 
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
@@ -461,23 +515,204 @@ public:
         verticalLayout_3->addItem(verticalSpacer_2);
 
         tabWidget->addTab(tab_3, QString());
+        tab_4 = new QWidget();
+        tab_4->setObjectName("tab_4");
+        verticalLayout_6 = new QVBoxLayout(tab_4);
+        verticalLayout_6->setObjectName("verticalLayout_6");
+        groupBox = new QGroupBox(tab_4);
+        groupBox->setObjectName("groupBox");
+        verticalLayout_5 = new QVBoxLayout(groupBox);
+        verticalLayout_5->setObjectName("verticalLayout_5");
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        label_16 = new QLabel(groupBox);
+        label_16->setObjectName("label_16");
 
-        horizontalLayout->addWidget(tabWidget);
+        horizontalLayout_8->addWidget(label_16);
 
-        horizontalLayout->setStretch(0, 2);
-        horizontalLayout->setStretch(1, 1);
+        comboBox_serialList = new QComboBox(groupBox);
+        comboBox_serialList->setObjectName("comboBox_serialList");
+
+        horizontalLayout_8->addWidget(comboBox_serialList);
+
+        btn_searchSerial = new QPushButton(groupBox);
+        btn_searchSerial->setObjectName("btn_searchSerial");
+
+        horizontalLayout_8->addWidget(btn_searchSerial);
+
+        btn_connectSerial = new QPushButton(groupBox);
+        btn_connectSerial->setObjectName("btn_connectSerial");
+
+        horizontalLayout_8->addWidget(btn_connectSerial);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_8);
+
+        label_17 = new QLabel(groupBox);
+        label_17->setObjectName("label_17");
+
+        verticalLayout_5->addWidget(label_17);
+
+        textEdit_input = new QTextEdit(groupBox);
+        textEdit_input->setObjectName("textEdit_input");
+
+        verticalLayout_5->addWidget(textEdit_input);
+
+        groupBox_2 = new QGroupBox(groupBox);
+        groupBox_2->setObjectName("groupBox_2");
+        formLayout = new QFormLayout(groupBox_2);
+        formLayout->setObjectName("formLayout");
+        label_18 = new QLabel(groupBox_2);
+        label_18->setObjectName("label_18");
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, label_18);
+
+        lineEdit_x = new QLineEdit(groupBox_2);
+        lineEdit_x->setObjectName("lineEdit_x");
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit_x);
+
+        label_19 = new QLabel(groupBox_2);
+        label_19->setObjectName("label_19");
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_19);
+
+        lineEdit_y = new QLineEdit(groupBox_2);
+        lineEdit_y->setObjectName("lineEdit_y");
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_y);
+
+        label_20 = new QLabel(groupBox_2);
+        label_20->setObjectName("label_20");
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_20);
+
+        lineEdit_z = new QLineEdit(groupBox_2);
+        lineEdit_z->setObjectName("lineEdit_z");
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, lineEdit_z);
+
+        label_21 = new QLabel(groupBox_2);
+        label_21->setObjectName("label_21");
+
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_21);
+
+        label_22 = new QLabel(groupBox_2);
+        label_22->setObjectName("label_22");
+
+        formLayout->setWidget(4, QFormLayout::LabelRole, label_22);
+
+        label_23 = new QLabel(groupBox_2);
+        label_23->setObjectName("label_23");
+
+        formLayout->setWidget(5, QFormLayout::LabelRole, label_23);
+
+        lineEdit_alpha = new QLineEdit(groupBox_2);
+        lineEdit_alpha->setObjectName("lineEdit_alpha");
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, lineEdit_alpha);
+
+        lineEdit_beta = new QLineEdit(groupBox_2);
+        lineEdit_beta->setObjectName("lineEdit_beta");
+
+        formLayout->setWidget(4, QFormLayout::FieldRole, lineEdit_beta);
+
+        lineEdit_gamma = new QLineEdit(groupBox_2);
+        lineEdit_gamma->setObjectName("lineEdit_gamma");
+
+        formLayout->setWidget(5, QFormLayout::FieldRole, lineEdit_gamma);
+
+        btn_cacl = new QPushButton(groupBox_2);
+        btn_cacl->setObjectName("btn_cacl");
+
+        formLayout->setWidget(6, QFormLayout::SpanningRole, btn_cacl);
+
+
+        verticalLayout_5->addWidget(groupBox_2);
+
+        groupBox_3 = new QGroupBox(groupBox);
+        groupBox_3->setObjectName("groupBox_3");
+        gridLayout_2 = new QGridLayout(groupBox_3);
+        gridLayout_2->setObjectName("gridLayout_2");
+        lineEdit_calc_best_3 = new QLineEdit(groupBox_3);
+        lineEdit_calc_best_3->setObjectName("lineEdit_calc_best_3");
+
+        gridLayout_2->addWidget(lineEdit_calc_best_3, 0, 2, 1, 1);
+
+        lineEdit_calc_best_5 = new QLineEdit(groupBox_3);
+        lineEdit_calc_best_5->setObjectName("lineEdit_calc_best_5");
+
+        gridLayout_2->addWidget(lineEdit_calc_best_5, 1, 1, 1, 1);
+
+        lineEdit_calc_best_2 = new QLineEdit(groupBox_3);
+        lineEdit_calc_best_2->setObjectName("lineEdit_calc_best_2");
+
+        gridLayout_2->addWidget(lineEdit_calc_best_2, 0, 1, 1, 1);
+
+        lineEdit_calc_best_4 = new QLineEdit(groupBox_3);
+        lineEdit_calc_best_4->setObjectName("lineEdit_calc_best_4");
+
+        gridLayout_2->addWidget(lineEdit_calc_best_4, 1, 0, 1, 1);
+
+        lineEdit_calc_best_1 = new QLineEdit(groupBox_3);
+        lineEdit_calc_best_1->setObjectName("lineEdit_calc_best_1");
+
+        gridLayout_2->addWidget(lineEdit_calc_best_1, 0, 0, 1, 1);
+
+        lineEdit_calc_best_6 = new QLineEdit(groupBox_3);
+        lineEdit_calc_best_6->setObjectName("lineEdit_calc_best_6");
+
+        gridLayout_2->addWidget(lineEdit_calc_best_6, 1, 2, 1, 1);
+
+        btn_send = new QPushButton(groupBox_3);
+        btn_send->setObjectName("btn_send");
+
+        gridLayout_2->addWidget(btn_send, 2, 0, 1, 3);
+
+
+        verticalLayout_5->addWidget(groupBox_3);
+
+
+        verticalLayout_6->addWidget(groupBox);
+
+        tabWidget->addTab(tab_4, QString());
+
+        horizontalLayout_9->addWidget(tabWidget);
+
+        horizontalLayout_9->setStretch(0, 2);
+        horizontalLayout_9->setStretch(1, 1);
+
+        verticalLayout_7->addLayout(horizontalLayout_9);
+
+        widget = new QWidget(centralwidget);
+        widget->setObjectName("widget");
+        widget->setMinimumSize(QSize(0, 35));
+        widget->setMaximumSize(QSize(16777215, 35));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(-1, 0, -1, 0);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        label_25 = new QLabel(widget);
+        label_25->setObjectName("label_25");
+
+        horizontalLayout->addWidget(label_25);
+
+        label_serialState = new QLabel(widget);
+        label_serialState->setObjectName("label_serialState");
+
+        horizontalLayout->addWidget(label_serialState);
+
+
+        verticalLayout_7->addWidget(widget);
+
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1134, 25));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName("statusbar");
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -487,17 +722,18 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\345\205\263\350\212\2021", nullptr));
-        label_angle1->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_joint1->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\345\205\263\350\212\2022", nullptr));
-        label_angle2->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_joint2->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "\345\205\263\350\212\2023", nullptr));
-        label_angle3->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_joint3->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "\345\205\263\350\212\2024", nullptr));
-        label_angle4->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_joint4->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "\345\205\263\350\212\2025", nullptr));
-        label_angle5->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_joint5->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "\345\205\263\350\212\2026", nullptr));
-        label_angle6->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_joint6->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        btn_reset->setText(QCoreApplication::translate("MainWindow", "\345\244\215\344\275\215", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "\350\277\220\345\212\250\346\216\247\345\210\266", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "\345\237\272\345\272\247", nullptr));
         btn_color1->setText(QString());
@@ -528,6 +764,24 @@ public:
         checkBox_polygonMode->setText(QCoreApplication::translate("MainWindow", "\346\230\276\347\244\272\347\272\277\346\241\206", nullptr));
         checkBox_trackMode->setText(QCoreApplication::translate("MainWindow", "\346\230\276\347\244\272\346\234\253\347\253\257\350\275\250\350\277\271", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "\345\234\272\346\231\257\350\256\276\347\275\256", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("MainWindow", "\344\270\262\345\217\243\351\200\232\344\277\241", nullptr));
+        label_16->setText(QCoreApplication::translate("MainWindow", "\344\270\262\345\217\243\345\220\215\347\247\260", nullptr));
+        btn_searchSerial->setText(QCoreApplication::translate("MainWindow", "\346\220\234\347\264\242\344\270\262\345\217\243", nullptr));
+        btn_connectSerial->setText(QCoreApplication::translate("MainWindow", "\350\277\236\346\216\245\344\270\262\345\217\243", nullptr));
+        label_17->setText(QCoreApplication::translate("MainWindow", "\346\216\245\346\224\266\345\214\272", nullptr));
+        groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "\346\234\237\346\234\233\345\247\277\346\200\201", nullptr));
+        label_18->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
+        label_19->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
+        label_20->setText(QCoreApplication::translate("MainWindow", "Z", nullptr));
+        label_21->setText(QCoreApplication::translate("MainWindow", "alpha", nullptr));
+        label_22->setText(QCoreApplication::translate("MainWindow", "beta", nullptr));
+        label_23->setText(QCoreApplication::translate("MainWindow", "gamma", nullptr));
+        btn_cacl->setText(QCoreApplication::translate("MainWindow", "\345\274\200\345\247\213\350\256\241\347\256\227", nullptr));
+        groupBox_3->setTitle(QCoreApplication::translate("MainWindow", "\346\234\200\344\274\230\350\247\243", nullptr));
+        btn_send->setText(QCoreApplication::translate("MainWindow", "\345\217\221\351\200\201\346\234\200\344\274\230\350\247\243", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "\344\270\262\345\217\243\351\200\232\344\277\241", nullptr));
+        label_25->setText(QCoreApplication::translate("MainWindow", "\344\270\262\345\217\243\347\212\266\346\200\201\357\274\232", nullptr));
+        label_serialState->setText(QCoreApplication::translate("MainWindow", "\346\234\252\350\277\236\346\216\245", nullptr));
     } // retranslateUi
 
 };

@@ -75,13 +75,21 @@ void CustomOpenGLWidget::initializeGL()
     glEnableVertexAttribArray(0);
     m_gridVAO.release();
 
-    path[0] = "C:\\Users\\hrkkk\\Desktop\\model\\dizuo.obj";
-    path[1] = "C:\\Users\\hrkkk\\Desktop\\model\\jizuo.obj";
-    path[2] = "C:\\Users\\hrkkk\\Desktop\\model\\dabi.obj";
-    path[3] = "C:\\Users\\hrkkk\\Desktop\\model\\pianyi.obj";
-    path[4] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaobi.obj";
-    path[5] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaoxiaobi.obj";
-    path[6] = "C:\\Users\\hrkkk\\Desktop\\model\\zhixingqi.obj";
+    // path[0] = "C:\\Users\\hrkkk\\Desktop\\model\\dizuo.obj";
+    // path[1] = "C:\\Users\\hrkkk\\Desktop\\model\\jizuo.obj";
+    // path[2] = "C:\\Users\\hrkkk\\Desktop\\model\\dabi.obj";
+    // path[3] = "C:\\Users\\hrkkk\\Desktop\\model\\pianyi.obj";
+    // path[4] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaobi.obj";
+    // path[5] = "C:\\Users\\hrkkk\\Desktop\\model\\xiaoxiaobi.obj";
+    // path[6] = "C:\\Users\\hrkkk\\Desktop\\model\\zhixingqi.obj";
+
+    path[0] = "..\\model\\base.obj";
+    path[1] = "..\\model\\shoulder.obj";
+    path[2] = "..\\model\\arm.obj";
+    path[3] = "..\\model\\elbow.obj";
+    path[4] = "..\\model\\forearm.obj";
+    path[5] = "..\\model\\wrist.obj";
+    path[6] = "..\\model\\tool.obj";
 
     for (int i = 0; i < 7; i++) {
         ourModel[i] = new Model(path[i]);
@@ -100,7 +108,7 @@ void CustomOpenGLWidget::initializeGL()
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
         180,
-        -90,
+        0,
         glm::vec3(0.0f, 1.0f, 0.0f)
     };
     component[2] = {
@@ -108,7 +116,7 @@ void CustomOpenGLWidget::initializeGL()
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
         180,
-        90,
+        0,
         glm::vec3(0.0f, 0.0f, 1.0f)
     };
     component[3] = {
@@ -116,7 +124,7 @@ void CustomOpenGLWidget::initializeGL()
         glm::vec3(0.0f, 1.0f, 0.0f),
         -180,
         180,
-        -90,
+        0,
         glm::vec3(1.0f, 1.0f, 0.0f)
     };
     component[4] = {
@@ -205,6 +213,7 @@ void CustomOpenGLWidget::paintGL()
     model = glm::mat4(1.0f);
     model = glm::translate(model, component[2].origin);
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(component[2].angle), component[2].axis);
 
     mvStack.push(mvStack.top());
@@ -406,7 +415,7 @@ glm::mat4 CustomOpenGLWidget::rotateAround(glm::mat4& model, const glm::vec3& pi
     return transform;
 }
 
-void CustomOpenGLWidget::updateAngle(int index, float angle)
+void CustomOpenGLWidget::updateSingleJoint(int index, float angle)
 {
     if (index < 0 || index >= 7) {
         return;
@@ -418,6 +427,21 @@ void CustomOpenGLWidget::updateAngle(int index, float angle)
         this->component[index].angle = component[index].maxAngle;
     } else {
         this->component[index].angle = angle;
+    }
+
+    update();
+}
+
+void CustomOpenGLWidget::updateAllJoints(float* angles)
+{
+    for (int i = 0; i < 6; ++i) {
+        if (angles[i] < component[i].minAngle) {
+            this->component[i].angle = component[i].minAngle;
+        } else if (angles[i] > component[i].maxAngle) {
+            this->component[i].angle = component[i].maxAngle;
+        } else {
+            this->component[i].angle = angles[i];
+        }
     }
 
     update();

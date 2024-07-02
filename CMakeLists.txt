@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGLWidgets SerialPort)
 
 include_directories(./3rd-party/GLFW/include/)
 include_directories(./3rd-party/GLAD/include/)
@@ -27,6 +27,8 @@ set(PROJECT_SOURCES
         MainWindow.ui
         shader.h camera.h model.h stb_image.h stb_image.cpp mesh.h
         lightVertexShader.glsl lightFragmentShader.glsl modelVertexShader.glsl modelFragmentShader.glsl
+        Arm_IK.cpp Arm_IK.h
+        serialport.cpp serialport.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -53,7 +55,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::OpenGLWidgets assimp-vc143-mt.lib)
+target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::SerialPort Qt${QT_VERSION_MAJOR}::OpenGLWidgets assimp-vc143-mt.lib)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

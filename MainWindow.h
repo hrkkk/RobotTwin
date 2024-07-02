@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QMainWindow>
+#include "Arm_IK.h"
+#include "serialport.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,6 +18,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void startCacl();
+
 private:
     Ui::MainWindow *ui;
+    ARM arm;
+    SerialPort *serialPort;
 };
