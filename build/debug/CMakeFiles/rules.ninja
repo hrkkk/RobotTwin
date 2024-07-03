@@ -22,7 +22,7 @@ msvc_deps_prefix = 注意: 包含文件:
 
 rule CXX_COMPILER__RobotTwin_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}D:\VisualStudio\VC\Tools\MSVC\14.38.33130\bin\HostX64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
+  command = ${LAUNCHER}${CODE_CHECK}D:\VisualStudio\VC\Tools\MSVC\14.35.32215\bin\HostX64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
 
 
@@ -30,7 +30,7 @@ rule CXX_COMPILER__RobotTwin_unscanned_Debug
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__RobotTwin_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && D:\Environment\CMake\bin\cmake.exe -E vs_link_exe --intdir=$OBJECT_DIR --rc="C:\PROGRA~2\Windows Kits\10\bin\100190~1.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\100190~1.0\x64\mt.exe" --manifests $MANIFESTS -- D:\VisualStudio\VC\Tools\MSVC\14.38.33130\bin\Hostx64\x64\link.exe /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && D:\CMake\bin\cmake.exe -E vs_link_exe --intdir=$OBJECT_DIR --rc="C:\PROGRA~2\Windows Kits\10\bin\10.0.22000.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\10.0.22000.0\x64\mt.exe" --manifests $MANIFESTS -- D:\VisualStudio\VC\Tools\MSVC\14.35.32215\bin\Hostx64\x64\link.exe /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 
@@ -47,7 +47,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\Environment\CMake\bin\cmake.exe --regenerate-during-build -SC:\Users\hrkkk\Desktop\RobotTwin -BC:\Users\hrkkk\Desktop\RobotTwin\build\debug
+  command = D:\CMake\bin\cmake.exe --regenerate-during-build -SC:\Users\hrkkk\Desktop\RobotTwin -BC:\Users\hrkkk\Desktop\RobotTwin\build\debug
   description = Re-running CMake...
   generator = 1
 
@@ -56,7 +56,7 @@ rule RERUN_CMAKE
 # Rule for cleaning additional files.
 
 rule CLEAN_ADDITIONAL
-  command = D:\Environment\CMake\bin\cmake.exe -DCONFIG=$CONFIG -P CMakeFiles\clean_additional.cmake
+  command = D:\CMake\bin\cmake.exe -DCONFIG=$CONFIG -P CMakeFiles\clean_additional.cmake
   description = Cleaning additional files...
 
 

@@ -9,12 +9,25 @@
 	"INCLUDE_DIR" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug/RobotTwin_autogen/include",
 	"INPUTS" : 
 	[
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/environment.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/curve.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/max.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/leftView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/min.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/wire.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/plus.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/coord.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/rightView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/model.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/frontView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/motion.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/sub.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/topView.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/backView.png",
-		"C:/Users/hrkkk/Desktop/RobotTwin/resources/bottomView.png"
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/grid.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/bottomView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/communicate.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/close.png"
 	],
 	"LOCK_FILE" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug/CMakeFiles/RobotTwin_autogen.dir/AutoRcc_res_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

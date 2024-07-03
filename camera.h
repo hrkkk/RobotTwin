@@ -19,9 +19,9 @@ const float YAW         = -90.0f;
 const float PITCH       =  0.0f;
 const float SPEED       =  2.5f;
 const float SENSITIVITY =  0.5f;
-const float ZOOM        =  45.0f;
+const float ZOOM        =  23.0f;
 
-const glm::vec3 target(0.0f, 0.0f, 0.0f);
+const glm::vec3 target(0.0f, 0.2f, 0.0f);
 
 
 // An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
@@ -127,7 +127,6 @@ public:
         // updateCameraVectors();
 
         // 更新相机位置
-        glm::vec3 target = glm::vec3(0.0f);
         float distance = glm::distance(Position, target);
 
         // 计算旋转角度

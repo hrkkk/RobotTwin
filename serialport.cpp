@@ -57,7 +57,7 @@ void SerialPort::sendData(const QByteArray &data)
 void SerialPort::readData()
 {
     const QByteArray data = serial->readAll();
-    emit dataReceived(QString::fromLocal8Bit(data));
+    emit dataReceived(data);
 }
 
 bool SerialPort::isOpen()

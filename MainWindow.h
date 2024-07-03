@@ -19,6 +19,7 @@ public:
     ~MainWindow();
 
     void startCacl();
+    void analyseData(const QByteArray& data);
 
 private:
     Ui::MainWindow *ui;

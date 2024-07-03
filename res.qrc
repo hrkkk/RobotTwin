@@ -6,5 +6,18 @@
         <file>resources/leftView.png</file>
         <file>resources/rightView.png</file>
         <file>resources/topView.png</file>
+        <file>resources/coord.png</file>
+        <file>resources/curve.png</file>
+        <file>resources/grid.png</file>
+        <file>resources/wire.png</file>
+        <file>resources/plus.png</file>
+        <file>resources/sub.png</file>
+        <file>resources/close.png</file>
+        <file>resources/max.png</file>
+        <file>resources/min.png</file>
+        <file>resources/communicate.png</file>
+        <file>resources/environment.png</file>
+        <file>resources/model.png</file>
+        <file>resources/motion.png</file>
     </qresource>
 </RCC>

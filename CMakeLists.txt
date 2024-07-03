@@ -55,7 +55,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::SerialPort Qt${QT_VERSION_MAJOR}::OpenGLWidgets assimp-vc143-mt.lib)
+target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::SerialPort Qt${QT_VERSION_MAJOR}::OpenGLWidgets opengl32.lib assimp-vc143-mt.lib)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

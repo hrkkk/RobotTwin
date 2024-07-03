@@ -21,7 +21,7 @@ public:
     bool isOpen();
 
 signals:
-    void dataReceived(const QString &data);
+    void dataReceived(const QByteArray &data);
     void errorOccurred(const QString &errorString);
 
 private slots:

@@ -26,7 +26,7 @@ void CustomOpenGLWidget::initializeGL()
     m_modelShader = Shader("../../modelVertexShader.glsl", "../../modelFragmentShader.glsl");
     m_lightShader = Shader("../../lightVertexShader.glsl", "../../lightFragmentShader.glsl");
     m_coordShader = Shader("../../coordVertexShader.glsl", "../../coordFragmentShader.glsl");
-    m_gridShader = Shader("../../coordVertexShader.glsl", "../../coordFragmentShader.glsl");
+    m_gridShader = Shader("../../coordVertexShader.glsl", "../../trackFragmentShader.glsl");
     m_trackShader = Shader("../../trackVertexShader.glsl", "../../trackFragmentShader.glsl");
 
     // 创建光源VAO
@@ -158,9 +158,10 @@ void CustomOpenGLWidget::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     if (m_polygonMode) {
-        // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glLineWidth(1.0f);
     } else {
-        // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
     // 渲染机械臂模型
@@ -289,7 +290,7 @@ void CustomOpenGLWidget::paintGL()
         // 渲染坐标轴
         m_coordShader.use();
         model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
         model = glm::scale(model, glm::vec3(0.1f));
         m_coordShader.setMat4("model", model);
         m_coordShader.setMat4("projection", projection);
@@ -313,8 +314,10 @@ void CustomOpenGLWidget::paintGL()
         m_gridShader.setMat4("projection", projection);
         m_gridShader.setMat4("view", view);
 
+        m_gridShader.setVec4("color", m_gridColor);
+
         m_gridVAO.bind();
-        glLineWidth(1.0f);
+        glLineWidth(m_gridLineWidth);
         glDrawArrays(GL_LINES, 0, gridVertices.size());
         m_gridVAO.release();
     }
@@ -331,9 +334,9 @@ void CustomOpenGLWidget::paintGL()
 
         // 绘制轨迹线
         m_trackShader.use();
-        m_trackShader.setVec3("color", glm::vec3(1.0f, 0.0f, 0.0f));
+        m_trackShader.setVec4("color", m_trackColor);
         m_trackVAO.bind();
-        glLineWidth(2.0f);
+        glLineWidth(m_trackLineWidth);
         glDrawArrays(GL_LINE_STRIP, 0, trackVertices.size());
         m_trackVAO.release();
     }
@@ -347,6 +350,7 @@ void CustomOpenGLWidget::resizeGL(int w, int h)
 void CustomOpenGLWidget::wheelEvent(QWheelEvent* event)
 {
     camera.ProcessMouseScroll(static_cast<float>(event->angleDelta().y() / 100.0f));
+    emit sig_updateViewZoom(camera.Zoom);
     update();
 }
 
@@ -376,21 +380,21 @@ void CustomOpenGLWidget::mouseMoveEvent(QMouseEvent* event)
 
 void CustomOpenGLWidget::keyReleaseEvent(QKeyEvent* event)
 {
-    switch (event->key()) {
-    case Qt::Key_W:
-        camera.ProcessKeyboard(FORWARD, 0.5);
-        break;
-    case Qt::Key_S:
-        camera.ProcessKeyboard(BACKWARD, 0.5);
-        break;
-    case Qt::Key_A:
-        camera.ProcessKeyboard(LEFT, 0.5);
-        break;
-    case Qt::Key_D:
-        camera.ProcessKeyboard(RIGHT, 0.5);
-        break;
-    }
-    update();
+    // switch (event->key()) {
+    // case Qt::Key_W:
+    //     camera.ProcessKeyboard(FORWARD, 0.5);
+    //     break;
+    // case Qt::Key_S:
+    //     camera.ProcessKeyboard(BACKWARD, 0.5);
+    //     break;
+    // case Qt::Key_A:
+    //     camera.ProcessKeyboard(LEFT, 0.5);
+    //     break;
+    // case Qt::Key_D:
+    //     camera.ProcessKeyboard(RIGHT, 0.5);
+    //     break;
+    // }
+    // update();
 }
 
 glm::mat4 CustomOpenGLWidget::rotateAround(glm::mat4& model, const glm::vec3& pivot, const glm::vec3& axis, float angle)
@@ -468,6 +472,26 @@ void CustomOpenGLWidget::setGridMode(bool flag)
 {
     m_gridMode = flag;
     update();
+}
+
+bool CustomOpenGLWidget::getPolygonMode()
+{
+    return m_polygonMode;
+}
+
+bool CustomOpenGLWidget::getGridMode()
+{
+    return m_gridMode;
+}
+
+bool CustomOpenGLWidget::getAxisMode()
+{
+    return m_axisMode;
+}
+
+bool CustomOpenGLWidget::getTrackMode()
+{
+    return m_trackMode;
 }
 
 void CustomOpenGLWidget::initGrid()
@@ -565,3 +589,25 @@ void CustomOpenGLWidget::setView(const std::string& view)
 //     });
 //     motionTimer.start(40);
 // }
+
+void CustomOpenGLWidget::updateGridStyle(float width, float r, float g, float b, float a)
+{
+    if (width > 0.0f) {
+        m_gridLineWidth = width;
+    }
+    if (r >= 0.0f && g >= 0.0f && b >= 0.0f && a >= 0.0f) {
+        m_gridColor = glm::vec4(r, g, b, a);
+    }
+    update();
+}
+
+void CustomOpenGLWidget::updateTrackStyle(float width, float r, float g, float b, float a)
+{
+    if (width > 0.0f) {
+        m_trackLineWidth = width;
+    }
+    if (r >= 0.0f && g >= 0.0f && b >= 0.0f && a >= 0.0f) {
+        m_trackColor = glm::vec4(r, g, b, a);
+    }
+    update();
+}

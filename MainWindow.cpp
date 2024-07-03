@@ -3,12 +3,21 @@
 
 #include <QColorDialog>
 #include <QMessageBox>
+#include <QSettings>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    this->showMaximized();
+    ui->groupBox_gridSetting->hide();
+    ui->groupBox_trackSetting->hide();
+
+    ui->tabWidget->tabBar()->hide();
+    this->setWindowFlags(Qt::FramelessWindowHint);
 
     arm = ARM();
     serialPort = new SerialPort(this);
@@ -35,6 +44,20 @@ MainWindow::MainWindow(QWidget *parent)
             }
         });
     }
+
+    connect(ui->btn_min, &QPushButton::clicked, this, [=]() {
+        this->showMinimized();
+    });
+    connect(ui->btn_max, &QPushButton::clicked, this, [=]() {
+        if (this->isMaximized()) {
+            this->showNormal();
+        } else {
+            this->showMaximized();
+        }
+    });
+    connect(ui->btn_close, &QPushButton::clicked, this, [=]() {
+        this->close();
+    });
 
     connect(ui->btn_color1, &QPushButton::clicked, this, [this]() {
         QColor selectedColor = QColorDialog::getColor(Qt::white, nullptr, "选择颜色", QColorDialog::ShowAlphaChannel);
@@ -106,6 +129,31 @@ MainWindow::MainWindow(QWidget *parent)
                                               .arg(selectedColor.blue()));
         }
     });
+    connect(ui->btn_saveColor, &QPushButton::clicked, this, [this]() {
+        QString filePath = "../color1.ini";
+        QSettings settings(filePath, QSettings::IniFormat);
+        QColor modelColors[7]={(255,0,0),(0,255,0),(0,0,255),(255,255,0),(255,0,255),(0,255,255),(0,0,0)};
+        for (int i = 0; i < 7; ++i) {
+            settings.setValue(QString("ModelColors/Model%1").arg(i + 1), modelColors[i]);
+        }
+    });
+    connect(ui->btn_setColor, &QPushButton::clicked, this, [this]() {
+        QString filePath = QFileDialog::getOpenFileName(this, "Open INI File", "", "INI Files (*.ini)");
+        if (!filePath.isEmpty()) {
+            QVector<QColor> colors;
+            QSettings settings(filePath, QSettings::IniFormat);
+            int i = 1;
+            while (settings.contains(QString("ModelColors/Model%1").arg(i))) {
+                colors.append(settings.value(QString("ModelColors/Model%1").arg(i)).value<QColor>());
+                ++i;
+            }
+            for (int i = 0; i < 7; ++i) {
+                qDebug() << "Model" << i + 1 << "Color:" << colors[i];
+            }
+        }
+
+    });
+
     connect(ui->checkBox_polygonMode, &QCheckBox::clicked, this, [this](bool isChecked) {
         ui->openGLWidget->setPolygonMode(isChecked);
     });
@@ -113,9 +161,19 @@ MainWindow::MainWindow(QWidget *parent)
         ui->openGLWidget->setAxisMode(isChecked);
     });
     connect(ui->checkBox_gridMode, &QCheckBox::clicked, this, [this](bool isChecked) {
+        if (isChecked) {
+            ui->groupBox_gridSetting->show();
+        } else {
+            ui->groupBox_gridSetting->hide();
+        }
         ui->openGLWidget->setGridMode(isChecked);
     });
     connect(ui->checkBox_trackMode, &QCheckBox::clicked, this, [this](bool isChecked) {
+        if (isChecked) {
+            ui->groupBox_trackSetting->show();
+        } else {
+            ui->groupBox_trackSetting->hide();
+        }
         ui->openGLWidget->setTrackMode(isChecked);
     });
 
@@ -126,8 +184,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_beta->setText(QString::number(0));
     ui->lineEdit_gamma->setText(QString::number(-90));
 
-    connect(serialPort, &SerialPort::dataReceived, this, [=](const QString& data) {
-        ui->textEdit_input->append(data);
+    connect(serialPort, &SerialPort::dataReceived, this, [=](const QByteArray& data) {
+        analyseData(data);
     });
     connect(serialPort, &SerialPort::errorOccurred, this, [=](const QString &errorString) {
         QMessageBox::critical(this, "Error", errorString);
@@ -153,6 +211,7 @@ MainWindow::MainWindow(QWidget *parent)
         serialPort->sendData(DATA);
     });
     connect(ui->btn_searchSerial, &QPushButton::clicked, this, [=]() {
+        ui->comboBox_serialList->clear();
         QList<QSerialPortInfo> serialList = QSerialPortInfo::availablePorts();
         foreach (const QSerialPortInfo &info, serialList) {
             ui->comboBox_serialList->addItem(info.portName());
@@ -185,6 +244,80 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btn_down, &QPushButton::clicked, this, [=]() {
         ui->openGLWidget->setView("down");
     });
+
+    connect(ui->btn_gridColor, &QPushButton::clicked, this, [=]() {
+        QColor selectedColor = QColorDialog::getColor(Qt::white, nullptr, "选择颜色", QColorDialog::ShowAlphaChannel);
+        // 检查用户是否点击了“确定”按钮
+        if (selectedColor.isValid()) {
+            ui->openGLWidget->updateGridStyle(-1, selectedColor.redF(), selectedColor.greenF(), selectedColor.blueF(), selectedColor.alphaF());
+            ui->btn_gridColor->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(selectedColor.red())\
+                                              .arg(selectedColor.green())\
+                                              .arg(selectedColor.blue()));
+        }
+    });
+    connect(ui->btn_trackColor, &QPushButton::clicked, this, [=]() {
+        QColor selectedColor = QColorDialog::getColor(Qt::white, nullptr, "选择颜色", QColorDialog::ShowAlphaChannel);
+        // 检查用户是否点击了“确定”按钮
+        if (selectedColor.isValid()) {
+            ui->openGLWidget->updateTrackStyle(-1, selectedColor.redF(), selectedColor.greenF(), selectedColor.blueF(), selectedColor.alphaF());
+            ui->btn_trackColor->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(selectedColor.red())\
+                                                 .arg(selectedColor.green())\
+                                                 .arg(selectedColor.blue()));
+        }
+    });
+    connect(ui->dSpinBox_gridWidth, &QDoubleSpinBox::valueChanged, this, [=](double value) {
+        ui->openGLWidget->updateGridStyle((float)value, -1, -1, -1, -1);
+    });
+    connect(ui->dSpinBox_trackWidth, &QDoubleSpinBox::valueChanged, this, [=](double value) {
+        ui->openGLWidget->updateTrackStyle((float)value, -1, -1, -1, -1);
+    });
+
+    connect(ui->btn_lineMode, &QPushButton::clicked, this, [=]() {
+        if (ui->openGLWidget->getPolygonMode()) {
+            ui->openGLWidget->setPolygonMode(false);
+            ui->btn_lineMode->setStyleSheet("background-color:#ffffff");
+        } else {
+            ui->openGLWidget->setPolygonMode(true);
+            ui->btn_lineMode->setStyleSheet("background-color:#2b7beb");
+        }
+    });
+    connect(ui->btn_gridMode, &QPushButton::clicked, this, [=]() {
+        if (ui->openGLWidget->getGridMode()) {
+            ui->openGLWidget->setGridMode(false);
+            ui->btn_gridMode->setStyleSheet("background-color:#ffffff");
+        } else {
+            ui->openGLWidget->setGridMode(true);
+            ui->btn_gridMode->setStyleSheet("background-color:#2b7beb");
+        }
+    });
+    connect(ui->btn_axisMode, &QPushButton::clicked, this, [=]() {
+        if (ui->openGLWidget->getAxisMode()) {
+            ui->openGLWidget->setAxisMode(false);
+            ui->btn_axisMode->setStyleSheet("background-color:#ffffff");
+        } else {
+            ui->openGLWidget->setAxisMode(true);
+            ui->btn_axisMode->setStyleSheet("background-color:#2b7beb");
+        }
+    });
+    connect(ui->btn_trackMode, &QPushButton::clicked, this, [=]() {
+        if (ui->openGLWidget->getTrackMode()) {
+            ui->openGLWidget->setTrackMode(false);
+            ui->btn_trackMode->setStyleSheet("background-color:#ffffff");
+        } else {
+            ui->openGLWidget->setTrackMode(true);
+            ui->btn_trackMode->setStyleSheet("background-color:#2b7beb");
+        }
+    });
+
+    QStringList tabTitles;
+    tabTitles << "运动控制" << "模型设置" << "场景设置" << "串口通信";
+    for (int i = 0; i < tabTitles.size(); i++) {
+        QPushButton* btn = ui->widget_5->findChild<QPushButton*>(QString("btn_tab%1").arg(i + 1));
+        connect(btn, &QPushButton::clicked, this, [=]() {
+            ui->tabWidget->setCurrentIndex(i);
+            ui->label_tabTitle->setText(tabTitles[i]);
+        });
+    }
 }
 
 MainWindow::~MainWindow()
@@ -227,4 +360,30 @@ void MainWindow::startCacl()
         slider->setValue(degree[i - 1]);
         label->setText(QString::number(degree[i - 1]));
     }
+}
+
+void MainWindow::analyseData(const QByteArray& data)
+{
+    qDebug() << "received: " << data;
+    qDebug() << data.size();
+    float angles[6] = { 0.0f };
+    if (data.size() == 20 && data[0] == (char)0xFF && data[1] == (char)0xFE) {
+        for (int i = 0; i < 6; i++) {
+            int signal = 1;
+            if (data[2 + i * 3] == (char)0xEE) {
+                signal = 1;
+            } else if (data[2 + i * 3] == (char)0x01) {
+                signal = -1;
+            }
+            uint8_t highByte = data[3 + i * 3];
+            uint8_t lowByte = data[4 + i * 3];
+            uint16_t num = (highByte << 8) | lowByte;
+            angles[i] = (float)(signal * num);
+        }
+    }
+    qDebug() << "analysed: ";
+    for (int i = 0; i < 6; ++i) {
+        qDebug() << angles[i] << " ";
+    }
+
 }

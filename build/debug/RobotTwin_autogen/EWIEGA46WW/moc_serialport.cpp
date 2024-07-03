@@ -102,7 +102,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSSerialPortENDCLASS[] = {
        6,    0,   38,    2, 0x08,    5 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QByteArray,    3,
     QMetaType::Void, QMetaType::QString,    5,
 
  // slots: parameters
@@ -122,7 +122,7 @@ Q_CONSTINIT const QMetaObject SerialPort::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<SerialPort, std::true_type>,
         // method 'dataReceived'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QByteArray &, std::false_type>,
         // method 'errorOccurred'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
@@ -138,7 +138,7 @@ void SerialPort::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<SerialPort *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->dataReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 0: _t->dataReceived((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
         case 1: _t->errorOccurred((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 2: _t->readData(); break;
         default: ;
@@ -146,7 +146,7 @@ void SerialPort::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (SerialPort::*)(const QString & );
+            using _t = void (SerialPort::*)(const QByteArray & );
             if (_t _q_method = &SerialPort::dataReceived; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -193,7 +193,7 @@ int SerialPort::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void SerialPort::dataReceived(const QString & _t1)
+void SerialPort::dataReceived(const QByteArray & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

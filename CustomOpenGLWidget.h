@@ -98,14 +98,25 @@ public:
     void updateSingleJoint(int index, float angle);
     void updateAllJoints(float* angles);
     void updateModelColor(int index, float r, float g, float b);
+    void updateGridStyle(float width, float r, float g, float b, float a);
+    void updateTrackStyle(float width, float r, float g, float b, float a);
+
     void setPolygonMode(bool flag);
     void setGridMode(bool flag);
     void setAxisMode(bool flag);
     void setTrackMode(bool flag);
+    bool getPolygonMode();
+    bool getGridMode();
+    bool getAxisMode();
+    bool getTrackMode();
+
     void initGrid();
     void renderTrajectory();
     void setView(const std::string& dir);
     // void motionSlowly(float* targetAngle);
+
+signals:
+    void sig_updateViewZoom(float zoom);
 
 protected:
     void initializeGL() override;
@@ -131,6 +142,11 @@ private:
     std::string path[7];
     Model* ourModel[7];
     Component component[7];
+
+    float m_gridLineWidth;
+    float m_trackLineWidth;
+    glm::vec4 m_gridColor;
+    glm::vec4 m_trackColor;
 
     bool m_polygonMode = false;
     bool m_axisMode = false;
