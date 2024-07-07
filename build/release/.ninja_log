@@ -1,0 +1,21 @@
+# ninja log v5
+4	1742	7420239645000405	RobotTwin_autogen/timestamp	6f6242ffdc1d684e
+1923	2146	7420239649986435	CMakeFiles/RobotTwin.dir/RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp.obj	6b8fa1c04c567058
+4	1742	7420239645000405	RobotTwin_autogen/mocs_compilation.cpp	6f6242ffdc1d684e
+4	1742	7420239645000405	C:/Users/hrkkk/Desktop/RobotTwin/build/release/RobotTwin_autogen/mocs_compilation.cpp	6f6242ffdc1d684e
+4	1742	7420239645000405	C:/Users/hrkkk/Desktop/RobotTwin/build/release/RobotTwin_autogen/timestamp	6f6242ffdc1d684e
+1743	1850	7420239647006396	RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp	52a18d0595d39fca
+1743	1850	7420239647006396	C:/Users/hrkkk/Desktop/RobotTwin/build/release/RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp	52a18d0595d39fca
+1880	3783	7420239666364438	CMakeFiles/RobotTwin.dir/main.cpp.obj	741e2efe6c106215
+1902	3810	7420239666644414	CMakeFiles/RobotTwin.dir/serialport.cpp.obj	8fda7642aadbb03b
+1890	3916	7420239667688887	CMakeFiles/RobotTwin.dir/Arm_IK.cpp.obj	8e3d15f4d3c360bc
+1868	6260	7420239691137405	CMakeFiles/RobotTwin.dir/stb_image.cpp.obj	b151ed992685b919
+1850	6275	7420239691262500	CMakeFiles/RobotTwin.dir/RobotTwin_autogen/mocs_compilation.cpp.obj	d5c7a83ef73a2c29
+1913	7675	7420239705287902	CMakeFiles/RobotTwin.dir/CustomOpenGLWidget.cpp.obj	e1f84096f54a662c
+1859	8483	7420239713360642	CMakeFiles/RobotTwin.dir/MainWindow.cpp.obj	10e938325d58c085
+10	205	7420239916275125	RobotTwin_autogen/timestamp	6f6242ffdc1d684e
+10	205	7420239916275125	RobotTwin_autogen/mocs_compilation.cpp	6f6242ffdc1d684e
+10	205	7420239916275125	C:/Users/hrkkk/Desktop/RobotTwin/build/release/RobotTwin_autogen/timestamp	6f6242ffdc1d684e
+10	205	7420239916275125	C:/Users/hrkkk/Desktop/RobotTwin/build/release/RobotTwin_autogen/mocs_compilation.cpp	6f6242ffdc1d684e
+211	4051	7420239954726631	CMakeFiles/RobotTwin.dir/MainWindow.cpp.obj	10e938325d58c085
+4051	4212	7420239956296631	RobotTwin.exe	d72a5e5a9847cf84

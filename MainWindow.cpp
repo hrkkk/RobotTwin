@@ -130,12 +130,12 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
     connect(ui->btn_saveColor, &QPushButton::clicked, this, [this]() {
-        QString filePath = "../color1.ini";
-        QSettings settings(filePath, QSettings::IniFormat);
-        QColor modelColors[7]={(255,0,0),(0,255,0),(0,0,255),(255,255,0),(255,0,255),(0,255,255),(0,0,0)};
-        for (int i = 0; i < 7; ++i) {
-            settings.setValue(QString("ModelColors/Model%1").arg(i + 1), modelColors[i]);
-        }
+        // QString filePath = "../color1.ini";
+        // QSettings settings(filePath, QSettings::IniFormat);
+        // QColor modelColors[7]={(255,0,0),(0,255,0),(0,0,255),(255,255,0),(255,0,255),(0,255,255),(0,0,0)};
+        // for (int i = 0; i < 7; ++i) {
+        //     settings.setValue(QString("ModelColors/Model%1").arg(i + 1), modelColors[i]);
+        // }
     });
     connect(ui->btn_setColor, &QPushButton::clicked, this, [this]() {
         QString filePath = QFileDialog::getOpenFileName(this, "Open INI File", "", "INI Files (*.ini)");
