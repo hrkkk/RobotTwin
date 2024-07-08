@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-9ca795afc6c4db41b9e2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "RobotTwin",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "RobotTwin::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-RobotTwin-Release-0a0054d7afc516d20f24.json",
+					"name" : "RobotTwin",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "RobotTwin_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-RobotTwin_autogen-Release-9e89762aa8e54f61e881.json",
+					"name" : "RobotTwin_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "RobotTwin_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-RobotTwin_autogen_timestamp_deps-Release-21da05c37f5e5095213e.json",
+					"name" : "RobotTwin_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/echo/Desktop/RobotTwin/cmake-build-release",
+		"source" : "/Users/echo/Desktop/RobotTwin"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

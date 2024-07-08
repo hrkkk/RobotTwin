@@ -12,6 +12,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // 设置OpenGL版本为4.1核心模式
+    QSurfaceFormat format;
+    format.setVersion(4, 1);
+    format.setProfile(QSurfaceFormat::CoreProfile);
+    QSurfaceFormat::setDefaultFormat(format);
+    ui->openGLWidget->setFormat(format);
+
     this->showMaximized();
     ui->groupBox_gridSetting->hide();
     ui->groupBox_trackSetting->hide();

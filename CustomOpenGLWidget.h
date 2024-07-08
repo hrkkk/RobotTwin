@@ -1,100 +1,18 @@
 #pragma once
 
+#include "Render.h"
+
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_3_3_Core>
-#include <QOpenGLVertexArrayObject>
-#include <QOpenGLShader>
-#include <QOpenGLShaderProgram>
-#include <QOpenGLBuffer>
 #include <QWheelEvent>
 #include <QMouseEvent>
 #include <QKeyEvent>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include "shader.h"
-#include "camera.h"
-#include "model.h"
-
-// settings
-const unsigned int SCR_WIDTH = 1920;
-const unsigned int SCR_HEIGHT = 1080;
-
-const float coordVertices[] = {
-    0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,     // 红色线段起点
-    1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,     // 红色线段终点
-
-    0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f,     // 绿色线段起点
-    0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,     // 绿色线段终点
-
-    0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,     // 蓝色线段起点
-    0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f      // 蓝色线段终点
-};
-
-const float lightVertices[] = {
-    -0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f,  0.5f, -0.5f,
-    0.5f,  0.5f, -0.5f,
-    -0.5f,  0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-
-    -0.5f, -0.5f,  0.5f,
-    0.5f, -0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-    -0.5f, -0.5f,  0.5f,
-
-    -0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f,
-    -0.5f, -0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-
-    0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-
-    -0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f, -0.5f,
-    0.5f, -0.5f,  0.5f,
-    0.5f, -0.5f,  0.5f,
-    -0.5f, -0.5f,  0.5f,
-    -0.5f, -0.5f, -0.5f,
-
-    -0.5f,  0.5f, -0.5f,
-    0.5f,  0.5f, -0.5f,
-    0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f,  0.5f,
-    -0.5f,  0.5f, -0.5f,
-};
-
-const int GRID_SIZE = 10;
-
-struct Component {
-    glm::vec3 origin;   // 原点坐标
-    glm::vec3 axis;     // 旋转轴
-    float minAngle;     // 最小旋转角度
-    float maxAngle;     // 最大旋转角度
-    float angle;        // 旋转角度
-    glm::vec3 color;    // 物体颜色
-};
-
-class CustomOpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
+class CustomOpenGLWidget : public QOpenGLWidget
 {
     Q_OBJECT
 public:
-    CustomOpenGLWidget(QWidget* parent = nullptr);
+    explicit CustomOpenGLWidget(QWidget* parent = nullptr);
 
-    glm::mat4 rotateAround(glm::mat4& model, const glm::vec3& center, const glm::vec3& axis, float angle);
     void updateSingleJoint(int index, float angle);
     void updateAllJoints(float* angles);
     void updateModelColor(int index, float r, float g, float b);
@@ -109,14 +27,10 @@ public:
     bool getGridMode();
     bool getAxisMode();
     bool getTrackMode();
-
-    void initGrid();
-    void renderTrajectory();
     void setView(const std::string& dir);
-    // void motionSlowly(float* targetAngle);
 
 signals:
-    void sig_updateViewZoom(float zoom);
+    void sig_updateViewZoom(float x);
 
 protected:
     void initializeGL() override;
@@ -125,31 +39,8 @@ protected:
     void wheelEvent(QWheelEvent* event) override;
     void mousePressEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent* event) override;
-    void keyReleaseEvent(QKeyEvent* event) override;
 
 private:
-    QOpenGLVertexArrayObject m_lightVAO;
-    QOpenGLVertexArrayObject m_coordVAO;
-    QOpenGLVertexArrayObject m_gridVAO;
-    QOpenGLVertexArrayObject m_trackVAO;
-    unsigned int m_trackVBO;
-    QOpenGLShaderProgram* m_lightProgram;
-    Shader m_lightShader;
-    Shader m_modelShader;
-    Shader m_coordShader;
-    Shader m_gridShader;
-    Shader m_trackShader;
-    std::string path[7];
-    Model* ourModel[7];
-    Component component[7];
-
-    float m_gridLineWidth;
-    float m_trackLineWidth;
-    glm::vec4 m_gridColor;
-    glm::vec4 m_trackColor;
-
-    bool m_polygonMode = false;
-    bool m_axisMode = false;
-    bool m_gridMode = false;
-    bool m_trackMode = false;
+    Render* m_render;
 };
+
