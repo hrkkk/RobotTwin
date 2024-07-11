@@ -449,13 +449,15 @@
 	"MOC_COMPILATION_FILE" : "/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
+		"MODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\"",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NO_DEBUG",
 		"QT_OPENGLWIDGETS_LIB",
 		"QT_OPENGL_LIB",
 		"QT_SERIALPORT_LIB",
-		"QT_WIDGETS_LIB"
+		"QT_WIDGETS_LIB",
+		"SHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\""
 	],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -502,7 +504,7 @@
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
-		"/Library/Developer/CommandLineTools/usr/bin/c++",
+		"/usr/bin/c++",
 		"-std=gnu++17",
 		"-dM",
 		"-E",

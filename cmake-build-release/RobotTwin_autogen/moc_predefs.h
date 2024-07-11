@@ -1,3 +1,4 @@
+#define MODEL_DIR "/Users/echo/Desktop/RobotTwin/model/"
 #define QT_CORE_LIB 1
 #define QT_GUI_LIB 1
 #define QT_NO_DEBUG 1
@@ -5,6 +6,7 @@
 #define QT_OPENGL_LIB 1
 #define QT_SERIALPORT_LIB 1
 #define QT_WIDGETS_LIB 1
+#define SHADER_DIR "/Users/echo/Desktop/RobotTwin/shader/"
 #define SIZEOF_DPTR (sizeof(void*))
 #define _LP64 1
 #define __APPLE_CC__ 6000

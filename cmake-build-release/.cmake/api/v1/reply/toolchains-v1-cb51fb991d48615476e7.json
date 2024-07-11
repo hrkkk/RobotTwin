@@ -28,7 +28,7 @@
 						"c++"
 					]
 				},
-				"path" : "/Library/Developer/CommandLineTools/usr/bin/c++",
+				"path" : "/usr/bin/c++",
 				"version" : "14.0.3.14030022"
 			},
 			"language" : "CXX",

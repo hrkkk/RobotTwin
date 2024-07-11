@@ -10,7 +10,6 @@ std::vector<glm::vec3> gridVertices;
 std::vector<glm::vec4> trackVertices;
 const size_t maxTrackPoint = 1000;
 glm::vec3 toolPosition = glm::vec3(0.0f);
-std::string currPath = "/Users/echo/Desktop/RobotTwin";
 std::stack<glm::mat4> mvStack;
 static float lastX = 0.0f;
 static float lastY = 0.0f;
@@ -28,11 +27,11 @@ void Render::initRender() {
         std::cout << "init glew failed\n";
     }
 
-    m_modelShader = Shader(currPath + "/shader/modelVertexShader.glsl", currPath  + "/shader/modelFragmentShader.glsl");
-    m_lightShader = Shader(currPath  + "/shader/lightVertexShader.glsl", currPath  + "/shader/lightFragmentShader.glsl");
-    m_coordShader = Shader(currPath  + "/shader/coordVertexShader.glsl", currPath  + "/shader/coordFragmentShader.glsl");
-    m_gridShader = Shader(currPath  + "/shader/coordVertexShader.glsl", currPath  + "/shader/trackFragmentShader.glsl");
-    m_trackShader = Shader(currPath  + "/shader/trackVertexShader.glsl", currPath  + "/shader/trackFragmentShader.glsl");
+    m_modelShader = Shader(SHADER_DIR "modelVertexShader.glsl", SHADER_DIR "modelFragmentShader.glsl");
+    m_lightShader = Shader(SHADER_DIR "lightVertexShader.glsl", SHADER_DIR "lightFragmentShader.glsl");
+    m_coordShader = Shader(SHADER_DIR "coordVertexShader.glsl", SHADER_DIR "coordFragmentShader.glsl");
+    m_gridShader = Shader(SHADER_DIR "coordVertexShader.glsl", SHADER_DIR "trackFragmentShader.glsl");
+    m_trackShader = Shader(SHADER_DIR "trackVertexShader.glsl", SHADER_DIR "trackFragmentShader.glsl");
 
     // 创建光源VAO
     glGenVertexArrays(1, &m_lightVAO);
@@ -86,13 +85,13 @@ void Render::initRender() {
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
 
-    path[0] = currPath + "/model/base.obj";
-    path[1] = currPath + "/model/shoulder.obj";
-    path[2] = currPath + "/model/arm.obj";
-    path[3] = currPath + "/model/elbow.obj";
-    path[4] = currPath + "/model/forearm.obj";
-    path[5] = currPath + "/model/wrist.obj";
-    path[6] = currPath + "/model/tool.obj";
+    path[0] = MODEL_DIR "base.obj";
+    path[1] = MODEL_DIR "shoulder.obj";
+    path[2] = MODEL_DIR "arm.obj";
+    path[3] = MODEL_DIR "elbow.obj";
+    path[4] = MODEL_DIR "forearm.obj";
+    path[5] = MODEL_DIR "wrist.obj";
+    path[6] = MODEL_DIR "tool.obj";
 
     for (int i = 0; i < 7; i++) {
         ourModel[i] = new Model(path[i]);

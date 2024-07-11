@@ -23,6 +23,7 @@
 			"find_package",
 			"find_dependency",
 			"_qt_internal_find_qt_dependencies",
+			"add_definitions",
 			"include_directories"
 		],
 		"files" : 
@@ -52,7 +53,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 52,
+				"line" : 55,
 				"parent" : 0
 			},
 			{
@@ -76,37 +77,37 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 95,
+				"line" : 98,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 19,
+				"line" : 22,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 34,
+				"line" : 37,
 				"parent" : 0
 			},
 			{
 				"command" : 6,
 				"file" : 1,
-				"line" : 75,
+				"line" : 78,
 				"parent" : 0
 			},
 			{
 				"command" : 7,
 				"file" : 1,
-				"line" : 76,
+				"line" : 79,
 				"parent" : 0
 			},
 			{
 				"command" : 10,
 				"file" : 1,
-				"line" : 13,
+				"line" : 16,
 				"parent" : 0
 			},
 			{
@@ -254,7 +255,7 @@
 			{
 				"command" : 10,
 				"file" : 1,
-				"line" : 32,
+				"line" : 35,
 				"parent" : 0
 			},
 			{
@@ -280,25 +281,37 @@
 			{
 				"command" : 13,
 				"file" : 1,
-				"line" : 15,
+				"line" : 12,
 				"parent" : 0
 			},
 			{
 				"command" : 13,
 				"file" : 1,
-				"line" : 16,
+				"line" : 13,
 				"parent" : 0
 			},
 			{
-				"command" : 13,
+				"command" : 14,
 				"file" : 1,
-				"line" : 17,
+				"line" : 18,
 				"parent" : 0
 			},
 			{
-				"command" : 13,
+				"command" : 14,
 				"file" : 1,
-				"line" : 33,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 14,
+				"file" : 1,
+				"line" : 20,
+				"parent" : 0
+			},
+			{
+				"command" : 14,
+				"file" : 1,
+				"line" : 36,
 				"parent" : 0
 			}
 		]
@@ -318,6 +331,10 @@
 			],
 			"defines" : 
 			[
+				{
+					"backtrace" : 43,
+					"define" : "MODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\""
+				},
 				{
 					"backtrace" : 31,
 					"define" : "QT_CORE_LIB"
@@ -345,6 +362,10 @@
 				{
 					"backtrace" : 9,
 					"define" : "QT_WIDGETS_LIB"
+				},
+				{
+					"backtrace" : 44,
+					"define" : "SHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\""
 				}
 			],
 			"frameworks" : 
@@ -387,19 +408,19 @@
 					"path" : "/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include"
 				},
 				{
-					"backtrace" : 43,
+					"backtrace" : 45,
 					"path" : "/Users/echo/Desktop/RobotTwin/."
 				},
 				{
-					"backtrace" : 44,
+					"backtrace" : 46,
 					"path" : "/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include"
 				},
 				{
-					"backtrace" : 45,
+					"backtrace" : 47,
 					"path" : "/Users/echo/Desktop/RobotTwin/./3rd-party/GLM"
 				},
 				{
-					"backtrace" : 46,
+					"backtrace" : 48,
 					"path" : "/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include"
 				},
 				{

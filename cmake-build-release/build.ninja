@@ -50,7 +50,7 @@ cmake_ninja_workdir = /Users/echo/Desktop/RobotTwin/cmake-build-release/
 build cmake_object_order_depends_target_RobotTwin: phony || RobotTwin_autogen RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp RobotTwin_autogen/mocs_compilation.cpp RobotTwin_autogen/timestamp RobotTwin_autogen_timestamp_deps
 
 build CMakeFiles/RobotTwin.dir/RobotTwin_autogen/mocs_compilation.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/RobotTwin_autogen/mocs_compilation.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -58,7 +58,7 @@ build CMakeFiles/RobotTwin.dir/RobotTwin_autogen/mocs_compilation.cpp.o: CXX_COM
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir/RobotTwin_autogen
 
 build CMakeFiles/RobotTwin.dir/main.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/main.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/main.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -66,7 +66,7 @@ build CMakeFiles/RobotTwin.dir/main.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Rel
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir
 
 build CMakeFiles/RobotTwin.dir/MainWindow.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/MainWindow.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/MainWindow.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -74,7 +74,7 @@ build CMakeFiles/RobotTwin.dir/MainWindow.cpp.o: CXX_COMPILER__RobotTwin_unscann
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir
 
 build CMakeFiles/RobotTwin.dir/stb_image.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/stb_image.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/stb_image.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -82,7 +82,7 @@ build CMakeFiles/RobotTwin.dir/stb_image.cpp.o: CXX_COMPILER__RobotTwin_unscanne
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir
 
 build CMakeFiles/RobotTwin.dir/Arm_IK.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/Arm_IK.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/Arm_IK.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -90,7 +90,7 @@ build CMakeFiles/RobotTwin.dir/Arm_IK.cpp.o: CXX_COMPILER__RobotTwin_unscanned_R
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir
 
 build CMakeFiles/RobotTwin.dir/serialport.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/serialport.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/serialport.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -98,7 +98,7 @@ build CMakeFiles/RobotTwin.dir/serialport.cpp.o: CXX_COMPILER__RobotTwin_unscann
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir
 
 build CMakeFiles/RobotTwin.dir/CustomOpenGLWidget.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/CustomOpenGLWidget.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/CustomOpenGLWidget.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -106,7 +106,7 @@ build CMakeFiles/RobotTwin.dir/CustomOpenGLWidget.cpp.o: CXX_COMPILER__RobotTwin
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir
 
 build CMakeFiles/RobotTwin.dir/Render.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/Render.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/Render.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -114,7 +114,7 @@ build CMakeFiles/RobotTwin.dir/Render.cpp.o: CXX_COMPILER__RobotTwin_unscanned_R
   OBJECT_FILE_DIR = CMakeFiles/RobotTwin.dir
 
 build CMakeFiles/RobotTwin.dir/RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp.o: CXX_COMPILER__RobotTwin_unscanned_Release /Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp || cmake_object_order_depends_target_RobotTwin
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB
+  DEFINES = -DMODEL_DIR=\"/Users/echo/Desktop/RobotTwin/model/\" -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -DSHADER_DIR=\"/Users/echo/Desktop/RobotTwin/shader/\"
   DEP_FILE = CMakeFiles/RobotTwin.dir/RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -fPIC
   INCLUDES = -I/Users/echo/Desktop/RobotTwin/cmake-build-release/RobotTwin_autogen/include -I/Users/echo/Desktop/RobotTwin/. -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLFW/include -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLM -I/Users/echo/Desktop/RobotTwin/./3rd-party/GLEW/macosx/glew/2.2.0_1/include -isystem /usr/local/lib/QtCore.framework/Headers -iframework /usr/local/lib -isystem /usr/local/share/qt/mkspecs/macx-clang -isystem /usr/local/include -isystem /usr/local/lib/QtWidgets.framework/Headers -isystem /usr/local/lib/QtGui.framework/Headers -isystem /usr/local/lib/QtSerialPort.framework/Headers -isystem /usr/local/lib/QtOpenGLWidgets.framework/Headers -isystem /usr/local/lib/QtOpenGL.framework/Headers
@@ -239,7 +239,7 @@ build RobotTwin_autogen/EWIEGA46WW/qrc_res.cpp | ${cmake_ninja_workdir}RobotTwin
 #############################################
 # Phony custom command for CMakeFiles/RobotTwin_autogen_timestamp_deps
 
-build CMakeFiles/RobotTwin_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/RobotTwin_autogen_timestamp_deps: phony /usr/local/share/qt/libexec/uic /usr/local/lib/QtWidgets.framework/Versions/A/QtWidgets /usr/local/share/qt/libexec/moc /usr/local/lib/QtCore.framework/Versions/A/QtCore /usr/local/lib/libassimp.5.4.1.dylib /usr/local/lib/QtOpenGLWidgets.framework/Versions/A/QtOpenGLWidgets /usr/local/lib/QtSerialPort.framework/Versions/A/QtSerialPort
+build CMakeFiles/RobotTwin_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/RobotTwin_autogen_timestamp_deps: phony /usr/local/lib/QtCore.framework/Versions/A/QtCore /usr/local/lib/QtOpenGLWidgets.framework/Versions/A/QtOpenGLWidgets /usr/local/share/qt/libexec/moc /usr/local/lib/QtWidgets.framework/Versions/A/QtWidgets /usr/local/lib/QtSerialPort.framework/Versions/A/QtSerialPort /usr/local/lib/libassimp.5.4.1.dylib /usr/local/share/qt/libexec/uic
 
 
 #############################################
