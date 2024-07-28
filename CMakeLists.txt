@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+﻿cmake_minimum_required(VERSION 3.5)
 
 project(RobotTwin VERSION 0.1 LANGUAGES CXX)
 
@@ -21,16 +21,20 @@ include_directories(./3rd-party/GLM/)
 
 link_directories(./3rd-party/GLFW/)
 
+# Windows系统
 if (WIN32)
     include_directories(./3rd-party/GLEW/windows/glew-2.1.0/include)
     link_directories(./3rd-party/GLEW/windows/glew-2.1.0/lib/Release/x64)
+    # MinGW编译器
     if (CMAKE_COMPILER_IS_GNUCXX)
         include_directories(./3rd-party/assimp/mingw/include/)
         link_directories(./3rd-party/assimp/mingw/bin/)
+    # MSVC编译器
     else()
         include_directories(./3rd-party/assimp/msvc/include/)
         link_directories(./3rd-party/assimp/msvc/lib/)
     endif()
+# MacOS系统
 elseif (APPLE)
     find_package(ASSIMP REQUIRED)
     include_directories(./3rd-party/GLEW/macosx/glew/2.2.0_1/include)
@@ -68,12 +72,16 @@ else()
     endif()
 endif()
 
+# Windows系统
 if (WIN32)
+    # MinGW编译器
     if (CMAKE_COMPILER_IS_GNUCXX)
-        target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::SerialPort Qt${QT_VERSION_MAJOR}::OpenGLWidgets opengl32.lib libassimp-5.dll glew32s.lib)
+        target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::SerialPort Qt${QT_VERSION_MAJOR}::OpenGLWidgets opengl32.lib libassimp-5.dll glew32.lib)
+    # MSVC编译器
     else()
-        target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::SerialPort Qt${QT_VERSION_MAJOR}::OpenGLWidgets opengl32.lib assimp-vc143-mt.lib glew32s.lib)
+        target_link_libraries(RobotTwin PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::SerialPort Qt${QT_VERSION_MAJOR}::OpenGLWidgets opengl32.lib assimp-vc143-mt.lib glew32.lib)
     endif()
+# MacOS系统
 elseif(APPLE)
     target_link_directories(RobotTwin PRIVATE ${ASSIMP_INCLUDE_DIRS})
     target_link_libraries(RobotTwin PRIVATE Qt6::Widgets Qt6::SerialPort Qt6::OpenGLWidgets ${ASSIMP_LIBRARIES} libGLEW.a "-framework OpenGL")

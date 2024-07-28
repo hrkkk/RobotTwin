@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Render.h"
 
@@ -23,14 +23,19 @@ public:
     void setGridMode(bool flag);
     void setAxisMode(bool flag);
     void setTrackMode(bool flag);
+    void setExplodeMode(bool flag);
+    void setNormalMode(bool flag);
     bool getPolygonMode();
     bool getGridMode();
     bool getAxisMode();
     bool getTrackMode();
+    bool getExplodeMode();
+    bool getNormalMode();
     void setView(const std::string& dir);
 
 signals:
     void sig_updateViewZoom(float x);
+    void sig_updateFps(float fps);
 
 protected:
     void initializeGL() override;

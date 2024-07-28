@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by E cho on 2024/7/8.
 //
 
@@ -27,7 +27,12 @@ void Render::initRender() {
         std::cout << "init glew failed\n";
     }
 
-    m_modelShader = Shader(SHADER_DIR "modelVertexShader.glsl", SHADER_DIR "modelFragmentShader.glsl");
+    m_modelShader = Shader(SHADER_DIR "modelVertexShader.glsl",
+                           SHADER_DIR "modelFragmentShader.glsl",
+                           SHADER_DIR "modelGeometryShader.glsl");
+    m_modelNormalShader = Shader(SHADER_DIR "modelNormalVertexShader.glsl",
+                                 SHADER_DIR "modelNormalFragmentShader.glsl",
+                                 SHADER_DIR "modelNormalGeometryShader.glsl");
     m_lightShader = Shader(SHADER_DIR "lightVertexShader.glsl", SHADER_DIR "lightFragmentShader.glsl");
     m_coordShader = Shader(SHADER_DIR "coordVertexShader.glsl", SHADER_DIR "coordFragmentShader.glsl");
     m_gridShader = Shader(SHADER_DIR "coordVertexShader.glsl", SHADER_DIR "trackFragmentShader.glsl");
@@ -156,6 +161,7 @@ void Render::initRender() {
 
     glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_MULTISAMPLE);
 }
 
 void Render::resizeRender() {
@@ -178,6 +184,7 @@ void Render::paintRender() {
     m_modelShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
     m_modelShader.setVec3("lightPos", 1.0f, 1.0f, 1.0f);
     m_modelShader.setVec3("viewPos", camera.Position);
+    m_modelShader.setBool("u_explodeMode", m_explodeMode);
 
     // MVP: 投影矩阵 —— 视图矩阵 —— 模型矩阵
     glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)m_windowWidth / (float)m_windowHeight, 0.1f, 100.0f);
@@ -432,24 +439,44 @@ void Render::setGridMode(bool flag)
     // update();
 }
 
-bool Render::getPolygonMode()
+void Render::setExplodeMode(bool flag)
+{
+    m_explodeMode = flag;
+}
+
+void Render::setNormalMode(bool flag)
+{
+    m_normalMode = flag;
+}
+
+bool Render::getPolygonMode() const
 {
     return m_polygonMode;
 }
 
-bool Render::getGridMode()
+bool Render::getGridMode() const
 {
     return m_gridMode;
 }
 
-bool Render::getAxisMode()
+bool Render::getAxisMode() const
 {
     return m_axisMode;
 }
 
-bool Render::getTrackMode()
+bool Render::getTrackMode() const
 {
     return m_trackMode;
+}
+
+bool Render::getExplodeMode() const
+{
+    return m_explodeMode;
+}
+
+bool Render::getNormalMode() const
+{
+    return m_normalMode;
 }
 
 void Render::initGrid()

@@ -325,6 +325,64 @@ QWidget {
                 </widget>
                </item>
                <item alignment="Qt::AlignHCenter">
+                <widget class="QPushButton" name="btn_explodeMode">
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="res.qrc">
+                   <normaloff>:/resources/explosion.png</normaloff>:/resources/explosion.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item alignment="Qt::AlignHCenter">
+                <widget class="QPushButton" name="btn_normalMode">
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="res.qrc">
+                   <normaloff>:/resources/normal.png</normaloff>:/resources/normal.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item alignment="Qt::AlignHCenter">
                 <widget class="QPushButton" name="btn_gridMode">
                  <property name="minimumSize">
                   <size>

@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by E cho on 2024/7/8.
 //
 
@@ -106,10 +106,14 @@ public:
     void setGridMode(bool flag);
     void setAxisMode(bool flag);
     void setTrackMode(bool flag);
-    bool getPolygonMode();
-    bool getGridMode();
-    bool getAxisMode();
-    bool getTrackMode();
+    void setExplodeMode(bool flag);
+    void setNormalMode(bool flag);
+    bool getPolygonMode() const;
+    bool getGridMode() const;
+    bool getAxisMode() const;
+    bool getTrackMode() const;
+    bool getExplodeMode() const;
+    bool getNormalMode() const;
 
     void initGrid();
     void setView(const std::string& dir);
@@ -129,6 +133,7 @@ private:
     Shader m_coordShader;
     Shader m_gridShader;
     Shader m_trackShader;
+    Shader m_modelNormalShader;
     std::string path[7];
     Model* ourModel[7];
     Component component[7];
@@ -142,6 +147,8 @@ private:
     bool m_axisMode = false;
     bool m_gridMode = false;
     bool m_trackMode = false;
+    bool m_explodeMode = false;
+    bool m_normalMode = false;
 
     int m_windowWidth;
     int m_windowHeight;

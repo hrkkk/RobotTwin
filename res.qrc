@@ -19,5 +19,7 @@
         <file>resources/environment.png</file>
         <file>resources/model.png</file>
         <file>resources/motion.png</file>
+        <file>resources/explosion.png</file>
+        <file>resources/normal.png</file>
     </qresource>
 </RCC>

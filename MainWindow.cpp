@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+﻿#include "MainWindow.h"
 #include "./ui_MainWindow.h"
 
 #include <QColorDialog>
@@ -14,8 +14,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 设置OpenGL版本为4.1核心模式
     QSurfaceFormat format;
-    format.setVersion(4, 1);
-    format.setProfile(QSurfaceFormat::CoreProfile);
+    format.setVersion(4, 1);    // 4.1版本
+    format.setProfile(QSurfaceFormat::CoreProfile);     // 核心模式
+    format.setSamples(4);   // 启用4xMSAA抗锯齿
     QSurfaceFormat::setDefaultFormat(format);
     ui->openGLWidget->setFormat(format);
 
@@ -313,6 +314,24 @@ MainWindow::MainWindow(QWidget *parent)
         } else {
             ui->openGLWidget->setTrackMode(true);
             ui->btn_trackMode->setStyleSheet("background-color:#2b7beb");
+        }
+    });
+    connect(ui->btn_explodeMode, &QPushButton::clicked, this, [=]() {
+        if (ui->openGLWidget->getExplodeMode()) {
+            ui->openGLWidget->setExplodeMode(false);
+            ui->btn_explodeMode->setStyleSheet("background-color:#ffffff");
+        } else {
+            ui->openGLWidget->setExplodeMode(true);
+            ui->btn_explodeMode->setStyleSheet("background-color:#2b7beb");
+        }
+    });
+    connect(ui->btn_normalMode, &QPushButton::clicked, this, [=]() {
+        if (ui->openGLWidget->getNormalMode()) {
+            ui->openGLWidget->setNormalMode(false);
+            ui->btn_normalMode->setStyleSheet("background-color:#ffffff");
+        } else {
+            ui->openGLWidget->setNormalMode(true);
+            ui->btn_normalMode->setStyleSheet("background-color:#2b7beb");
         }
     });
 

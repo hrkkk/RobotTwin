@@ -1,4 +1,4 @@
-#ifndef ARM_IK_H
+﻿#ifndef ARM_IK_H
 #define ARM_IK_H
 
 
@@ -10,8 +10,8 @@
 #define MATRIX3d_SIZE 3
 #define MATRIX4d_SIZE 4
 #define MAX_SOLUTIONS 6
-#define M_PI_2 3.1415926535/2
-#define M_PI 3.1415926535
+// #define M_PI_2 3.1415926535/2
+// #define M_PI 3.1415926535
 
 
 //枚举机械臂末端欧拉角

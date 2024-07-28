@@ -371,6 +371,12 @@
 			null
 		],
 		[
+			"C:/Users/hrkkk/Desktop/RobotTwin/Render.h",
+			"MU",
+			"EWIEGA46WW/moc_Render.cpp",
+			null
+		],
+		[
 			"C:/Users/hrkkk/Desktop/RobotTwin/camera.h",
 			"MU",
 			"EWIEGA46WW/moc_camera.cpp",
@@ -412,12 +418,14 @@
 	"MOC_COMPILATION_FILE" : "C:/Users/hrkkk/Desktop/RobotTwin/build/debug/RobotTwin_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
+		"MODEL_DIR=\"C:/Users/hrkkk/Desktop/RobotTwin/model/\"",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_OPENGLWIDGETS_LIB",
 		"QT_OPENGL_LIB",
 		"QT_SERIALPORT_LIB",
 		"QT_WIDGETS_LIB",
+		"SHADER_DIR=\"C:/Users/hrkkk/Desktop/RobotTwin/shader/\"",
 		"UNICODE",
 		"WIN32",
 		"WIN64",
@@ -434,10 +442,11 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"C:/Users/hrkkk/Desktop/RobotTwin",
 		"C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/GLFW/include",
-		"C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/GLAD/include",
 		"C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/GLM",
-		"C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/assimp/include",
+		"C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/GLEW/windows/glew-2.1.0/include",
+		"C:/Users/hrkkk/Desktop/RobotTwin/3rd-party/assimp/msvc/include",
 		"D:/Qt6/6.6.1/msvc2019_64/include/QtCore",
 		"D:/Qt6/6.6.1/msvc2019_64/include",
 		"D:/Qt6/6.6.1/msvc2019_64/mkspecs/win32-msvc",
@@ -474,6 +483,7 @@
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/Arm_IK.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/CustomOpenGLWidget.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/MainWindow.cpp", "MU", null ],
+		[ "C:/Users/hrkkk/Desktop/RobotTwin/Render.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/main.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/serialport.cpp", "MU", null ],
 		[ "C:/Users/hrkkk/Desktop/RobotTwin/stb_image.cpp", "MU", null ]

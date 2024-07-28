@@ -41,7 +41,7 @@ static constexpr auto qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS = QtMoc
     "CustomOpenGLWidget",
     "sig_updateViewZoom",
     "",
-    "zoom"
+    "x"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS_t {
@@ -49,7 +49,7 @@ struct qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS_t {
     char stringdata0[19];
     char stringdata1[19];
     char stringdata2[1];
-    char stringdata3[5];
+    char stringdata3[2];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -58,12 +58,12 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS_t qt
         QT_MOC_LITERAL(0, 18),  // "CustomOpenGLWidget"
         QT_MOC_LITERAL(19, 18),  // "sig_updateViewZoom"
         QT_MOC_LITERAL(38, 0),  // ""
-        QT_MOC_LITERAL(39, 4)   // "zoom"
+        QT_MOC_LITERAL(39, 1)   // "x"
     },
     "CustomOpenGLWidget",
     "sig_updateViewZoom",
     "",
-    "zoom"
+    "x"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -138,8 +138,6 @@ void *CustomOpenGLWidget::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS.stringdata0))
         return static_cast<void*>(this);
-    if (!strcmp(_clname, "QOpenGLFunctions"))
-        return static_cast< QOpenGLFunctions*>(this);
     return QOpenGLWidget::qt_metacast(_clname);
 }
 

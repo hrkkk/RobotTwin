@@ -1,4 +1,4 @@
-#include "CustomOpenGLWidget.h"
+﻿#include "CustomOpenGLWidget.h"
 
 CustomOpenGLWidget::CustomOpenGLWidget(QWidget* parent): QOpenGLWidget(parent)
 {
@@ -87,6 +87,24 @@ void CustomOpenGLWidget::setAxisMode(bool flag) {
 void CustomOpenGLWidget::setTrackMode(bool flag) {
     m_render->setTrackMode(flag);
     update();
+}
+
+void CustomOpenGLWidget::setExplodeMode(bool flag) {
+    m_render->setExplodeMode(flag);
+    update();
+}
+
+void CustomOpenGLWidget::setNormalMode(bool flag) {
+    m_render->setNormalMode(flag);
+    update();
+}
+
+bool CustomOpenGLWidget::getExplodeMode() {
+    return m_render->getExplodeMode();
+}
+
+bool CustomOpenGLWidget::getNormalMode() {
+    return m_render->getNormalMode();
 }
 
 bool CustomOpenGLWidget::getPolygonMode() {
