@@ -55,6 +55,8 @@ public:
     QSpacerItem *verticalSpacer_4;
     QVBoxLayout *verticalLayout_8;
     QPushButton *btn_lineMode;
+    QPushButton *btn_explodeMode;
+    QPushButton *btn_normalMode;
     QPushButton *btn_gridMode;
     QPushButton *btn_axisMode;
     QPushButton *btn_trackMode;
@@ -336,13 +338,35 @@ public:
 
         verticalLayout_8->addWidget(btn_lineMode, 0, Qt::AlignHCenter);
 
+        btn_explodeMode = new QPushButton(widget_2);
+        btn_explodeMode->setObjectName("btn_explodeMode");
+        btn_explodeMode->setMinimumSize(QSize(60, 60));
+        btn_explodeMode->setMaximumSize(QSize(60, 60));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/resources/explosion.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_explodeMode->setIcon(icon4);
+        btn_explodeMode->setIconSize(QSize(30, 30));
+
+        verticalLayout_8->addWidget(btn_explodeMode, 0, Qt::AlignHCenter);
+
+        btn_normalMode = new QPushButton(widget_2);
+        btn_normalMode->setObjectName("btn_normalMode");
+        btn_normalMode->setMinimumSize(QSize(60, 60));
+        btn_normalMode->setMaximumSize(QSize(60, 60));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/resources/normal.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_normalMode->setIcon(icon5);
+        btn_normalMode->setIconSize(QSize(30, 30));
+
+        verticalLayout_8->addWidget(btn_normalMode, 0, Qt::AlignHCenter);
+
         btn_gridMode = new QPushButton(widget_2);
         btn_gridMode->setObjectName("btn_gridMode");
         btn_gridMode->setMinimumSize(QSize(60, 60));
         btn_gridMode->setMaximumSize(QSize(60, 60));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/resources/grid.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_gridMode->setIcon(icon4);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/resources/grid.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_gridMode->setIcon(icon6);
         btn_gridMode->setIconSize(QSize(30, 30));
 
         verticalLayout_8->addWidget(btn_gridMode, 0, Qt::AlignHCenter);
@@ -351,9 +375,9 @@ public:
         btn_axisMode->setObjectName("btn_axisMode");
         btn_axisMode->setMinimumSize(QSize(60, 60));
         btn_axisMode->setMaximumSize(QSize(60, 60));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/resources/coord.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_axisMode->setIcon(icon5);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/resources/coord.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_axisMode->setIcon(icon7);
         btn_axisMode->setIconSize(QSize(30, 30));
 
         verticalLayout_8->addWidget(btn_axisMode, 0, Qt::AlignHCenter);
@@ -362,9 +386,9 @@ public:
         btn_trackMode->setObjectName("btn_trackMode");
         btn_trackMode->setMinimumSize(QSize(60, 60));
         btn_trackMode->setMaximumSize(QSize(60, 60));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/resources/curve.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_trackMode->setIcon(icon6);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/resources/curve.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_trackMode->setIcon(icon8);
         btn_trackMode->setIconSize(QSize(30, 30));
 
         verticalLayout_8->addWidget(btn_trackMode, 0, Qt::AlignHCenter);
@@ -454,9 +478,9 @@ public:
         btn_tab1->setMinimumSize(QSize(40, 40));
         btn_tab1->setMaximumSize(QSize(40, 40));
         btn_tab1->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/resources/motion.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_tab1->setIcon(icon7);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/resources/motion.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_tab1->setIcon(icon9);
         btn_tab1->setIconSize(QSize(30, 30));
 
         horizontalLayout_11->addWidget(btn_tab1);
@@ -465,9 +489,9 @@ public:
         btn_tab2->setObjectName("btn_tab2");
         btn_tab2->setMinimumSize(QSize(40, 40));
         btn_tab2->setMaximumSize(QSize(40, 40));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/resources/model.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_tab2->setIcon(icon8);
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/resources/model.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_tab2->setIcon(icon10);
         btn_tab2->setIconSize(QSize(30, 30));
 
         horizontalLayout_11->addWidget(btn_tab2);
@@ -476,9 +500,9 @@ public:
         btn_tab3->setObjectName("btn_tab3");
         btn_tab3->setMinimumSize(QSize(40, 40));
         btn_tab3->setMaximumSize(QSize(40, 40));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/resources/environment.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_tab3->setIcon(icon9);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/resources/environment.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_tab3->setIcon(icon11);
         btn_tab3->setIconSize(QSize(30, 30));
 
         horizontalLayout_11->addWidget(btn_tab3);
@@ -487,9 +511,9 @@ public:
         btn_tab4->setObjectName("btn_tab4");
         btn_tab4->setMinimumSize(QSize(40, 40));
         btn_tab4->setMaximumSize(QSize(40, 40));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/resources/communicate.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_tab4->setIcon(icon10);
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/resources/communicate.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_tab4->setIcon(icon12);
         btn_tab4->setIconSize(QSize(30, 30));
 
         horizontalLayout_11->addWidget(btn_tab4);
@@ -787,9 +811,9 @@ public:
         btn_left->setObjectName("btn_left");
         btn_left->setMinimumSize(QSize(30, 30));
         btn_left->setMaximumSize(QSize(30, 30));
-        QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/resources/leftView.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_left->setIcon(icon11);
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/resources/leftView.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_left->setIcon(icon13);
 
         gridLayout->addWidget(btn_left, 1, 0, 1, 1);
 
@@ -797,9 +821,9 @@ public:
         btn_right->setObjectName("btn_right");
         btn_right->setMinimumSize(QSize(30, 30));
         btn_right->setMaximumSize(QSize(30, 30));
-        QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/resources/rightView.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_right->setIcon(icon12);
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/resources/rightView.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_right->setIcon(icon14);
 
         gridLayout->addWidget(btn_right, 1, 2, 1, 1);
 
@@ -807,9 +831,9 @@ public:
         btn_down->setObjectName("btn_down");
         btn_down->setMinimumSize(QSize(30, 30));
         btn_down->setMaximumSize(QSize(30, 30));
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/resources/bottomView.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_down->setIcon(icon13);
+        QIcon icon15;
+        icon15.addFile(QString::fromUtf8(":/resources/bottomView.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_down->setIcon(icon15);
 
         gridLayout->addWidget(btn_down, 2, 1, 1, 1);
 
@@ -817,9 +841,9 @@ public:
         btn_front->setObjectName("btn_front");
         btn_front->setMinimumSize(QSize(30, 30));
         btn_front->setMaximumSize(QSize(30, 30));
-        QIcon icon14;
-        icon14.addFile(QString::fromUtf8(":/resources/frontView.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_front->setIcon(icon14);
+        QIcon icon16;
+        icon16.addFile(QString::fromUtf8(":/resources/frontView.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_front->setIcon(icon16);
 
         gridLayout->addWidget(btn_front, 1, 1, 1, 1);
 
@@ -827,9 +851,9 @@ public:
         btn_back->setObjectName("btn_back");
         btn_back->setMinimumSize(QSize(30, 30));
         btn_back->setMaximumSize(QSize(30, 30));
-        QIcon icon15;
-        icon15.addFile(QString::fromUtf8(":/resources/backView.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_back->setIcon(icon15);
+        QIcon icon17;
+        icon17.addFile(QString::fromUtf8(":/resources/backView.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_back->setIcon(icon17);
 
         gridLayout->addWidget(btn_back, 1, 3, 1, 1);
 
@@ -837,9 +861,9 @@ public:
         btn_up->setObjectName("btn_up");
         btn_up->setMinimumSize(QSize(30, 30));
         btn_up->setMaximumSize(QSize(30, 30));
-        QIcon icon16;
-        icon16.addFile(QString::fromUtf8(":/resources/topView.png"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_up->setIcon(icon16);
+        QIcon icon18;
+        icon18.addFile(QString::fromUtf8(":/resources/topView.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_up->setIcon(icon18);
 
         gridLayout->addWidget(btn_up, 0, 1, 1, 1);
 
@@ -1152,6 +1176,8 @@ public:
         btn_lineMode->setToolTip(QCoreApplication::translate("MainWindow", "\346\230\276\347\244\272\347\272\277\346\241\206", nullptr));
 #endif // QT_CONFIG(tooltip)
         btn_lineMode->setText(QString());
+        btn_explodeMode->setText(QString());
+        btn_normalMode->setText(QString());
 #if QT_CONFIG(tooltip)
         btn_gridMode->setToolTip(QCoreApplication::translate("MainWindow", "\346\230\276\347\244\272\347\275\221\346\240\274", nullptr));
 #endif // QT_CONFIG(tooltip)

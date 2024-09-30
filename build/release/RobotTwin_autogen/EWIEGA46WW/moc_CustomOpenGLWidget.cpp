@@ -41,15 +41,19 @@ constexpr auto qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS = QtMocHelpers
     "CustomOpenGLWidget",
     "sig_updateViewZoom",
     "",
-    "zoom"
+    "x",
+    "sig_updateFps",
+    "fps"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS_t {
-    uint offsetsAndSizes[8];
+    uint offsetsAndSizes[12];
     char stringdata0[19];
     char stringdata1[19];
     char stringdata2[1];
-    char stringdata3[5];
+    char stringdata3[2];
+    char stringdata4[14];
+    char stringdata5[4];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -58,12 +62,16 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS_t qt
         QT_MOC_LITERAL(0, 18),  // "CustomOpenGLWidget"
         QT_MOC_LITERAL(19, 18),  // "sig_updateViewZoom"
         QT_MOC_LITERAL(38, 0),  // ""
-        QT_MOC_LITERAL(39, 4)   // "zoom"
+        QT_MOC_LITERAL(39, 1),  // "x"
+        QT_MOC_LITERAL(41, 13),  // "sig_updateFps"
+        QT_MOC_LITERAL(55, 3)   // "fps"
     },
     "CustomOpenGLWidget",
     "sig_updateViewZoom",
     "",
-    "zoom"
+    "x",
+    "sig_updateFps",
+    "fps"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -75,18 +83,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSCustomOpenGLWidgetENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   20,    2, 0x06,    1 /* Public */,
+       1,    1,   26,    2, 0x06,    1 /* Public */,
+       4,    1,   29,    2, 0x06,    3 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Float,    3,
+    QMetaType::Void, QMetaType::Float,    5,
 
        0        // eod
 };
@@ -102,6 +112,9 @@ Q_CONSTINIT const QMetaObject CustomOpenGLWidget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<CustomOpenGLWidget, std::true_type>,
         // method 'sig_updateViewZoom'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<float, std::false_type>,
+        // method 'sig_updateFps'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<float, std::false_type>
     >,
     nullptr
@@ -114,6 +127,7 @@ void CustomOpenGLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         (void)_t;
         switch (_id) {
         case 0: _t->sig_updateViewZoom((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
+        case 1: _t->sig_updateFps((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -122,6 +136,13 @@ void CustomOpenGLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
             using _t = void (CustomOpenGLWidget::*)(float );
             if (_t _q_method = &CustomOpenGLWidget::sig_updateViewZoom; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (CustomOpenGLWidget::*)(float );
+            if (_t _q_method = &CustomOpenGLWidget::sig_updateFps; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
                 return;
             }
         }
@@ -138,8 +159,6 @@ void *CustomOpenGLWidget::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CLASSCustomOpenGLWidgetENDCLASS.stringdata0))
         return static_cast<void*>(this);
-    if (!strcmp(_clname, "QOpenGLFunctions"))
-        return static_cast< QOpenGLFunctions*>(this);
     return QOpenGLWidget::qt_metacast(_clname);
 }
 
@@ -149,13 +168,13 @@ int CustomOpenGLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
@@ -165,5 +184,12 @@ void CustomOpenGLWidget::sig_updateViewZoom(float _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void CustomOpenGLWidget::sig_updateFps(float _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

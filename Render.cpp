@@ -27,9 +27,11 @@ void Render::initRender() {
         std::cout << "init glew failed\n";
     }
 
-    m_modelShader = Shader(SHADER_DIR "modelVertexShader.glsl",
-                           SHADER_DIR "modelFragmentShader.glsl",
-                           SHADER_DIR "modelGeometryShader.glsl");
+    // m_modelShader = Shader(SHADER_DIR "modelVertexShader.glsl",
+    //                        SHADER_DIR "modelFragmentShader.glsl",
+    //                        SHADER_DIR "modelGeometryShader.glsl");
+    m_modelShader = Shader(SHADER_DIR "pbrVertexShader.glsl",
+                           SHADER_DIR "pbrFragmentShader.glsl");
     m_modelNormalShader = Shader(SHADER_DIR "modelNormalVertexShader.glsl",
                                  SHADER_DIR "modelNormalFragmentShader.glsl",
                                  SHADER_DIR "modelNormalGeometryShader.glsl");

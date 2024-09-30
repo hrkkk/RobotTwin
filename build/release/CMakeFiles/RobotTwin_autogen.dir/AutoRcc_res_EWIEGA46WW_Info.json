@@ -21,11 +21,13 @@
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/motion.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/sub.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/topView.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/explosion.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/backView.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/grid.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/bottomView.png",
 		"C:/Users/hrkkk/Desktop/RobotTwin/resources/communicate.png",
-		"C:/Users/hrkkk/Desktop/RobotTwin/resources/close.png"
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/close.png",
+		"C:/Users/hrkkk/Desktop/RobotTwin/resources/normal.png"
 	],
 	"LOCK_FILE" : "C:/Users/hrkkk/Desktop/RobotTwin/build/release/CMakeFiles/RobotTwin_autogen.dir/AutoRcc_res_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

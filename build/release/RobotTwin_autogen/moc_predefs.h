@@ -124,6 +124,7 @@
 #define _cdecl __attribute__((__cdecl__))
 #define __GXX_RTTI 1
 #define __MMX__ 1
+#define SHADER_DIR "C:/Users/hrkkk/Desktop/RobotTwin/shader/"
 #define __FLT_HAS_DENORM__ 1
 #define __SIZEOF_LONG_DOUBLE__ 16
 #define __BIGGEST_ALIGNMENT__ 16
@@ -403,6 +404,7 @@
 #define __cpp_constexpr 201603L
 #define __SSE2__ 1
 #define __cpp_deduction_guides 201703L
+#define MODEL_DIR "C:/Users/hrkkk/Desktop/RobotTwin/model/"
 #define __INT32_TYPE__ int
 #define __SIZEOF_DOUBLE__ 8
 #define __cpp_exceptions 199711L
